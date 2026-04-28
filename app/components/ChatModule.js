@@ -9,7 +9,7 @@ export default function ChatModule({ initialQuery = null }) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [initialized, setInitialized] = useState(false)
-  const messagesEndRef = useRef(null)
+  const messagesContainerRef = useRef(null)
   const initialQueryRef = useRef(null)
 
   const starterQuestions = [
@@ -61,7 +61,9 @@ export default function ChatModule({ initialQuery = null }) {
   }, [messages, initialized])
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight
+    }
   }, [messages, loading])
 
   const handleStarterQuestion = (question) => setInput(question)
@@ -168,7 +170,7 @@ export default function ChatModule({ initialQuery = null }) {
         </div>
       )}
 
-      <div className="chat-messages">
+      <div className="chat-messages" ref={messagesContainerRef}>
         {messages.map((msg) => (
           <div key={msg.id} className={`chat-bubble-row ${msg.sender}`}>
             <div className={`chat-avatar ${msg.sender}`}>
@@ -202,7 +204,6 @@ export default function ChatModule({ initialQuery = null }) {
             </div>
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       <div className="chat-input-row">

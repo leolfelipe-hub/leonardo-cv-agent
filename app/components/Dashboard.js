@@ -164,7 +164,7 @@ export default function Dashboard({ onNavigate, onAskAgent, initialQuery }) {
       <section className="main-grid">
         <div className="charts-area">
           {/* Chat Module */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+          <div id="chat-section" className="animate-fade-in-up" style={{ animationDelay: '600ms' }}>
             <ChatModule initialQuery={initialQuery} />
           </div>
 

@@ -9,7 +9,14 @@ export default function QuickActions({ onAction, onNavigate }) {
       label: 'Falar com IA',
       desc: 'Pergunte sobre experiência',
       color: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-      action: () => onNavigate && onNavigate('chat'),
+      action: () => {
+        const chat = document.getElementById('chat-section')
+        if (chat) {
+          chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        } else if (onNavigate) {
+          onNavigate('chat')
+        }
+      },
     },
     {
       icon: Award,
