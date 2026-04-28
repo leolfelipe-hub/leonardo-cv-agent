@@ -50,8 +50,8 @@ export default function Dashboard({ onNavigate, onAskAgent, initialQuery }) {
     },
     {
       title: 'Empresas',
-      value: '4',
-      change: 'fortune & startup',
+      value: '9',
+      change: 'F500 + startup',
       trend: 'up',
       icon: Briefcase,
       color: 'orange',
