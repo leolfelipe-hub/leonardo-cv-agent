@@ -9,6 +9,8 @@ export default function LoginForm({ onLoginSuccess }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
+  const [codeSent, setCodeSent] = useState(false)
+  const [requestEmail, setRequestEmail] = useState('')
 
   const handleSubmitCode = async (e) => {
     e.preventDefault()
@@ -49,17 +51,14 @@ export default function LoginForm({ onLoginSuccess }) {
       const response = await fetch('/api/auth/request-token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: requestEmail }),
       })
 
       const data = await response.json()
 
       if (data.success) {
-        setSuccess('Código enviado para seu email! Verifique sua caixa de entrada.')
-        setTimeout(() => {
-          setMode('have-code')
-          setSuccess('')
-        }, 2000)
+        setCodeSent(true)
+        setEmail(requestEmail)
       } else {
         setError(data.error || 'Erro ao solicitar código')
       }
@@ -140,25 +139,79 @@ export default function LoginForm({ onLoginSuccess }) {
         )}
 
         {mode === 'request-code' && (
-          <form onSubmit={handleRequestToken} className="login-form">
-            <div className="form-group">
-              <label>Seu Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="seu@email.com"
-                required
-                disabled={loading}
-              />
-            </div>
+          <form
+            onSubmit={codeSent ? handleSubmitCode : handleRequestToken}
+            className="login-form"
+          >
+            {!codeSent ? (
+              <>
+                <div className="form-group">
+                  <label>Seu Email</label>
+                  <input
+                    type="email"
+                    value={requestEmail}
+                    onChange={(e) => setRequestEmail(e.target.value)}
+                    placeholder="seu@email.com"
+                    required
+                    disabled={loading}
+                  />
+                </div>
 
-            {error && <div className="error-message">{error}</div>}
-            {success && <div className="success-message">{success}</div>}
+                {error && <div className="error-message">{error}</div>}
 
-            <button type="submit" disabled={loading || !email} className="login-button">
-              {loading ? 'Enviando...' : 'Solicitar Código'}
-            </button>
+                <button type="submit" disabled={loading || !requestEmail} className="login-button">
+                  {loading ? 'Enviando...' : 'Solicitar Código'}
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="success-message">
+                  ✓ Código enviado para {email}! Verifique sua caixa de entrada.
+                </div>
+
+                <div className="form-group">
+                  <label>Seu Código de Acesso</label>
+                  <input
+                    type="text"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value.toUpperCase())}
+                    placeholder="ABC123"
+                    required
+                    disabled={loading}
+                    autoFocus
+                    style={{ fontFamily: 'monospace', letterSpacing: '2px' }}
+                  />
+                </div>
+
+                {error && <div className="error-message">{error}</div>}
+
+                <button type="submit" disabled={loading || !code} className="login-button">
+                  {loading ? 'Verificando...' : 'Acessar'}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCodeSent(false)
+                    setCode('')
+                    setError('')
+                    setRequestEmail('')
+                  }}
+                  style={{
+                    marginTop: '12px',
+                    background: 'none',
+                    border: 'none',
+                    color: '#7c3aed',
+                    cursor: 'pointer',
+                    fontSize: '13px',
+                    textDecoration: 'underline',
+                  }}
+                  disabled={loading}
+                >
+                  Voltar
+                </button>
+              </>
+            )}
           </form>
         )}
 
