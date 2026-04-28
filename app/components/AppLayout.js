@@ -49,6 +49,27 @@ export default function AppLayout({ onLogout }) {
     setActiveSection('chat')
   }
 
+  const handleTalkToAgent = () => {
+    setMobileOpen(false)
+    if (activeSection === 'dashboard') {
+      // Já no dashboard: rola até o chat
+      const chat = document.getElementById('chat-section')
+      if (chat) {
+        chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    } else {
+      // Em outra seção: volta pro dashboard e rola
+      setActiveSection('dashboard')
+      setSearchQuery(null)
+      setTimeout(() => {
+        const chat = document.getElementById('chat-section')
+        if (chat) {
+          chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
+  }
+
   const renderSection = () => {
     switch (activeSection) {
       case 'timeline':
@@ -244,6 +265,7 @@ export default function AppLayout({ onLogout }) {
               onLogout={onLogout}
               onSearch={handleSearch}
               onMobileMenu={() => setMobileOpen(true)}
+              onTalkToAgent={handleTalkToAgent}
             />
           </div>
 

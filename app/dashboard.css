@@ -350,27 +350,29 @@
   background: rgba(251, 191, 36, 0.15);
 }
 
-/* CTA Falar (WhatsApp) — sempre visível */
+/* CTA Falar com IA — sempre visível */
 .topnav-cta-talk {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #25d366, #128c7e);
-  border: 1px solid rgba(37, 211, 102, 0.5);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: 1px solid rgba(139, 92, 246, 0.5);
   color: white;
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
   flex-shrink: 0;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .topnav-cta-talk:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 8px 18px rgba(99, 102, 241, 0.4);
 }
 
 .topnav-cta-talk-label {
@@ -2664,8 +2666,11 @@
   .welcome-row { gap: 16px; }
   .welcome-highlights { min-width: auto; width: 100%; }
 
+  /* Esconder metrics cards no mobile (manter no desktop) */
+  .metrics-grid { display: none !important; }
+
   /* Reordenar main-grid no mobile - nova storyline */
-  /* Welcome → Metrics → QA → Donuts → Insights → Chat → Marcos → Trajetória → Status → Spotify */
+  /* Welcome → Marcos → QA → Donuts → Insights → Trajetória → Chat → Status → Spotify */
   .main-grid {
     display: flex !important;
     flex-direction: column;
@@ -2675,12 +2680,12 @@
   .side-area {
     display: contents;
   }
-  .side-area > :nth-child(1) { order: 1; }   /* Quick Actions */
-  .charts-area > :nth-child(3) { order: 2; } /* Donuts row */
-  .charts-area > :nth-child(4) { order: 3; } /* Insights */
-  .charts-area > :nth-child(1) { order: 4; } /* Chat */
-  .side-area > :nth-child(2) { order: 5; }   /* Marcos (Recent Activity) */
-  .charts-area > :nth-child(2) { order: 6; } /* Trajetória (line chart) */
+  .side-area > :nth-child(2) { order: 1; }   /* Marcos (Recent Activity) */
+  .side-area > :nth-child(1) { order: 2; }   /* Quick Actions */
+  .charts-area > :nth-child(3) { order: 3; } /* Donuts row */
+  .charts-area > :nth-child(4) { order: 4; } /* Insights */
+  .charts-area > :nth-child(2) { order: 5; } /* Trajetória (line chart) */
+  .charts-area > :nth-child(1) { order: 6; } /* Chat */
 }
 
 /* ============================================
@@ -2740,40 +2745,62 @@
   .section-card { padding: 16px; }
 
   /* Cases layout - mais espaço pro texto */
-  .cases-layout { gap: 12px; }
-  .case-detail-header { padding: 18px 16px; }
-  .case-detail-title { font-size: 1.2rem; line-height: 1.3; }
-  .case-detail-tagline { font-size: 0.92rem; }
-  .case-detail-meta { gap: 12px; font-size: 0.8rem; }
-  .case-detail-body { padding: 18px 14px; gap: 22px; }
-  .case-section-block { grid-template-columns: 24px 1fr; gap: 8px; }
-  .case-section-num {
-    font-size: 1rem;
-    font-weight: 700;
-    color: rgba(251, 191, 36, 0.7);
-    line-height: 1;
-    padding-top: 4px;
+  .cases-layout { gap: 12px !important; }
+  .case-detail-header { padding: 18px 16px !important; }
+  .case-detail-title { font-size: 1.2rem !important; line-height: 1.3 !important; }
+  .case-detail-tagline { font-size: 0.92rem !important; }
+  .case-detail-meta { gap: 12px !important; font-size: 0.8rem !important; }
+  .case-detail-body { padding: 18px 14px !important; gap: 22px !important; }
+  .case-section-block {
+    display: block !important;
+    grid-template-columns: none !important;
   }
-  .case-section-title { font-size: 1rem; margin-bottom: 8px; }
-  .case-section-text { font-size: 0.92rem; line-height: 1.7; }
-  .case-results-grid { grid-template-columns: 1fr; gap: 10px; }
-  .case-result-tile { padding: 14px 16px; }
-  .case-result-metric { font-size: 1.4rem; }
-  .case-method-tag { font-size: 0.78rem; padding: 5px 10px; }
+  .case-section-num {
+    display: inline-block !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: var(--accent-amber) !important;
+    line-height: 1 !important;
+    padding: 4px 10px !important;
+    margin-bottom: 10px !important;
+    background: rgba(251, 191, 36, 0.12) !important;
+    border: 1px solid rgba(251, 191, 36, 0.3) !important;
+    border-radius: 6px !important;
+    letter-spacing: 0.05em !important;
+  }
+  .case-section-title { font-size: 1rem !important; margin-bottom: 8px !important; }
+  .case-section-text { font-size: 0.92rem !important; line-height: 1.7 !important; }
+  .case-results-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .case-result-tile { padding: 14px 16px !important; }
+  .case-result-metric { font-size: 1.4rem !important; }
+  .case-method-tag { font-size: 0.78rem !important; padding: 5px 10px !important; }
 
   /* Timeline mais larga + bullets pequenos */
-  .timeline-row { grid-template-columns: 18px 1fr; gap: 10px; }
-  .timeline-bullet { width: 18px; height: 18px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); }
-  .timeline-bullet svg { width: 10px !important; height: 10px !important; }
-  .timeline-line-down { width: 1px; }
-  .timeline-card { padding: 16px 14px; }
-  .timeline-position { font-size: 1rem; line-height: 1.3; }
-  .timeline-company { font-size: 0.9rem; }
-  .timeline-card-top { flex-direction: column; gap: 8px; align-items: flex-start; }
-  .timeline-duration { font-size: 0.75rem; padding: 4px 10px; }
-  .timeline-meta { gap: 10px; font-size: 0.8rem; }
-  .timeline-description { font-size: 0.9rem; line-height: 1.6; }
-  .timeline-expanded li { font-size: 0.88rem; line-height: 1.6; }
+  .timeline-row {
+    grid-template-columns: 14px 1fr !important;
+    gap: 12px !important;
+  }
+  .timeline-bullet {
+    width: 14px !important;
+    height: 14px !important;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15), 0 4px 8px rgba(0,0,0,0.3) !important;
+  }
+  .timeline-bullet svg {
+    display: none !important;
+  }
+  .timeline-line-down { width: 1px !important; }
+  .timeline-card { padding: 16px 14px !important; }
+  .timeline-position { font-size: 1rem !important; line-height: 1.3 !important; }
+  .timeline-company { font-size: 0.9rem !important; }
+  .timeline-card-top {
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+  .timeline-duration { font-size: 0.75rem !important; padding: 4px 10px !important; }
+  .timeline-meta { gap: 10px !important; font-size: 0.8rem !important; }
+  .timeline-description { font-size: 0.9rem !important; line-height: 1.6 !important; }
+  .timeline-expanded li { font-size: 0.88rem !important; line-height: 1.6 !important; }
 
   /* Expertise */
   .skills-grid-dark { grid-template-columns: 1fr; }
