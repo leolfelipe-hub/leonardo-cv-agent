@@ -72,7 +72,7 @@ export default function LoginForm({ onLoginSuccess }) {
       <div className="login-card">
         <div className="login-header">
           <h1>Assistente de IA do Leonardo</h1>
-          <p>Seu Currículo e Companheiro de Carreira</p>
+          <p>Explore a carreira e expertise do Leonardo</p>
         </div>
 
         <div className="login-tabs">
