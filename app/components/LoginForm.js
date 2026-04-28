@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Sparkles, Bot, ArrowRight, MessageCircle, FileDown } from 'lucide-react'
 
 export default function LoginForm({ onLoginSuccess }) {
   const [mode, setMode] = useState('have-code')
@@ -11,6 +12,19 @@ export default function LoginForm({ onLoginSuccess }) {
   const [success, setSuccess] = useState('')
   const [codeSent, setCodeSent] = useState(false)
   const [requestEmail, setRequestEmail] = useState('')
+  const spotlightRef = useRef(null)
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (spotlightRef.current) {
+        spotlightRef.current.style.left = `${e.clientX - 300}px`
+        spotlightRef.current.style.top = `${e.clientY - 300}px`
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   const handleSubmitCode = async (e) => {
     e.preventDefault()
@@ -70,107 +84,147 @@ export default function LoginForm({ onLoginSuccess }) {
   }
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <h1>Assistente de IA do Leonardo</h1>
-          <p>Explore a carreira e expertise do Leonardo</p>
+    <div className="login-shell">
+      {/* Background animado igual ao dashboard */}
+      <div className="bg-layer">
+        <div className="bg-base-gradient"></div>
+        <div className="bg-color-overlay"></div>
+
+        <svg className="bg-mesh-grid" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="loginMesh" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path
+                d="M 80 0 L 0 0 0 80"
+                fill="none"
+                stroke="url(#loginMeshGrad)"
+                strokeWidth="0.3"
+              />
+            </pattern>
+            <linearGradient id="loginMeshGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#1e293b" stopOpacity={0.4} />
+              <stop offset="50%" stopColor="#475569" stopOpacity={0.2} />
+              <stop offset="100%" stopColor="#334155" stopOpacity={0.1} />
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#loginMesh)" />
+        </svg>
+
+        <div ref={spotlightRef} className="bg-spotlight"></div>
+        <div className="bg-accent-tl"></div>
+        <div className="bg-accent-br"></div>
+
+        <div className="bg-orbs">
+          <div className="bg-orb bg-orb-1"></div>
+          <div className="bg-orb bg-orb-2"></div>
+          <div className="bg-orb bg-orb-3"></div>
+          <div className="bg-twinkle bg-twinkle-1"></div>
+          <div className="bg-twinkle bg-twinkle-2"></div>
+          <div className="bg-twinkle bg-twinkle-3"></div>
+        </div>
+      </div>
+
+      <div className="login-grid">
+        {/* HERO LEFT */}
+        <div className="login-hero">
+          <div className="login-hero-avatar-row">
+            <div className="login-hero-avatar">LD</div>
+            <div className="login-hero-id">
+              <span className="login-hero-id-name">Leonardo Dibe</span>
+              <span className="login-hero-id-role">Senior Growth Marketing</span>
+            </div>
+          </div>
+
+          <h1 className="login-hero-greeting">
+            Olá, eu sou o <span>Leonardo Dibe</span>
+          </h1>
+
+          <div className="login-hero-text">
+            Como um bom <strong>growth hacker</strong>, achei que nada melhor do que um{' '}
+            <strong>dashboard com inteligência artificial</strong> pra mostrar um pouco da minha
+            trajetória.
+          </div>
+
+          <div className="login-hero-text">
+            Faça login pra explorar <strong className="accent">19+ anos de carreira</strong>,{' '}
+            <strong className="accent">5 cases reais</strong> com números e marcas como{' '}
+            <strong>Mastercard, Braza Bank, Outback e Accor</strong>.
+          </div>
+
+          <div className="login-hero-text ai-line">
+            <Bot size={20} style={{ color: 'var(--accent-amber)', flexShrink: 0, marginTop: '2px' }} />
+            <span>
+              <strong>E o melhor:</strong> tudo aqui foi construído com IA — incluindo um{' '}
+              <strong>agente</strong> com quem você pode conversar pra aprofundar em qualquer tema
+              da minha carreira.
+            </span>
+          </div>
+
+          <div className="login-hero-cta-line">
+            E depois de navegar um pouco, <strong>me manda um WhatsApp</strong> 💬 pra gente
+            trocar uma ideia — vai ser um prazer contar mais detalhes.
+            <br />
+            <br />
+            Se preferir o CV no formato tradicional, ele também está disponível dentro do dash.{' '}
+            <strong>Boa análise!</strong>
+          </div>
+
+          <div className="login-hero-pills">
+            <span className="login-hero-pill brand">⚡ Growth</span>
+            <span className="login-hero-pill brand">👥 CRM & LCM</span>
+            <span className="login-hero-pill brand">📊 Performance</span>
+            <span className="login-hero-pill brand">🤖 AI Automation</span>
+          </div>
         </div>
 
-        <div className="login-tabs">
-          <button
-            className={`tab-btn ${mode === 'have-code' ? 'active' : ''}`}
-            onClick={() => {
-              setMode('have-code')
-              setError('')
-              setSuccess('')
-            }}
-            disabled={loading}
-          >
-            Já tenho o código
-          </button>
-          <button
-            className={`tab-btn ${mode === 'request-code' ? 'active' : ''}`}
-            onClick={() => {
-              setMode('request-code')
-              setError('')
-              setSuccess('')
-            }}
-            disabled={loading}
-          >
-            Solicitar código
-          </button>
-        </div>
-
-        {mode === 'have-code' && (
-          <form onSubmit={handleSubmitCode} className="login-form">
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="seu@email.com"
-                required
-                disabled={loading}
-              />
+        {/* CARD RIGHT */}
+        <div className="login-card-wrap">
+          <div className="login-card-dark">
+            <div className="login-card-header">
+              <h2>Acessar dashboard</h2>
+              <p>Insira o código que você recebeu por email ou solicite um novo</p>
             </div>
 
-            <div className="form-group">
-              <label>Código de Acesso</label>
-              <input
-                type="text"
-                value={code}
-                onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="ABC123"
-                required
+            <div className="login-tabs-dark">
+              <button
+                className={`login-tab-btn ${mode === 'have-code' ? 'active' : ''}`}
+                onClick={() => {
+                  setMode('have-code')
+                  setError('')
+                  setSuccess('')
+                }}
                 disabled={loading}
-                style={{ fontFamily: 'monospace', letterSpacing: '2px' }}
-              />
+              >
+                Já tenho código
+              </button>
+              <button
+                className={`login-tab-btn ${mode === 'request-code' ? 'active' : ''}`}
+                onClick={() => {
+                  setMode('request-code')
+                  setError('')
+                  setSuccess('')
+                }}
+                disabled={loading}
+              >
+                Solicitar código
+              </button>
             </div>
 
-            {error && <div className="error-message">{error}</div>}
-            {success && <div className="success-message">{success}</div>}
-
-            <button type="submit" disabled={loading || !email || !code} className="login-button">
-              {loading ? 'Verificando...' : 'Acessar'}
-            </button>
-          </form>
-        )}
-
-        {mode === 'request-code' && (
-          <form
-            onSubmit={codeSent ? handleSubmitCode : handleRequestToken}
-            className="login-form"
-          >
-            {!codeSent ? (
-              <>
-                <div className="form-group">
-                  <label>Seu Email</label>
+            {mode === 'have-code' && (
+              <form onSubmit={handleSubmitCode} className="login-form-dark">
+                <div className="login-field-dark">
+                  <label>Email</label>
                   <input
                     type="email"
-                    value={requestEmail}
-                    onChange={(e) => setRequestEmail(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="seu@email.com"
                     required
                     disabled={loading}
                   />
                 </div>
 
-                {error && <div className="error-message">{error}</div>}
-
-                <button type="submit" disabled={loading || !requestEmail} className="login-button">
-                  {loading ? 'Enviando...' : 'Solicitar Código'}
-                </button>
-              </>
-            ) : (
-              <>
-                <div className="success-message">
-                  ✓ Código enviado para {email}! Verifique sua caixa de entrada.
-                </div>
-
-                <div className="form-group">
-                  <label>Seu Código de Acesso</label>
+                <div className="login-field-dark">
+                  <label>Código de Acesso</label>
                   <input
                     type="text"
                     value={code}
@@ -178,46 +232,121 @@ export default function LoginForm({ onLoginSuccess }) {
                     placeholder="ABC123"
                     required
                     disabled={loading}
-                    autoFocus
                     style={{ fontFamily: 'monospace', letterSpacing: '2px' }}
                   />
                 </div>
 
-                {error && <div className="error-message">{error}</div>}
-
-                <button type="submit" disabled={loading || !code} className="login-button">
-                  {loading ? 'Verificando...' : 'Acessar'}
-                </button>
+                {error && <div className="login-msg-error">{error}</div>}
+                {success && <div className="login-msg-success">{success}</div>}
 
                 <button
-                  type="button"
-                  onClick={() => {
-                    setCodeSent(false)
-                    setCode('')
-                    setError('')
-                    setRequestEmail('')
-                  }}
-                  style={{
-                    marginTop: '12px',
-                    background: 'none',
-                    border: 'none',
-                    color: '#7c3aed',
-                    cursor: 'pointer',
-                    fontSize: '13px',
-                    textDecoration: 'underline',
-                  }}
-                  disabled={loading}
+                  type="submit"
+                  disabled={loading || !email || !code}
+                  className="login-submit-btn"
                 >
-                  Voltar
+                  {loading ? 'Verificando...' : (
+                    <>
+                      Acessar
+                      <ArrowRight size={16} />
+                    </>
+                  )}
                 </button>
-              </>
+              </form>
             )}
-          </form>
-        )}
 
-        <div className="login-info">
-          <p>🔐 Acesso privado e seguro</p>
-          <p>Seu código é válido por 24 horas</p>
+            {mode === 'request-code' && (
+              <form
+                onSubmit={codeSent ? handleSubmitCode : handleRequestToken}
+                className="login-form-dark"
+              >
+                {!codeSent ? (
+                  <>
+                    <div className="login-field-dark">
+                      <label>Seu Email</label>
+                      <input
+                        type="email"
+                        value={requestEmail}
+                        onChange={(e) => setRequestEmail(e.target.value)}
+                        placeholder="seu@email.com"
+                        required
+                        disabled={loading}
+                      />
+                    </div>
+
+                    {error && <div className="login-msg-error">{error}</div>}
+
+                    <button
+                      type="submit"
+                      disabled={loading || !requestEmail}
+                      className="login-submit-btn"
+                    >
+                      {loading ? 'Enviando...' : (
+                        <>
+                          Solicitar código
+                          <Sparkles size={16} />
+                        </>
+                      )}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <div className="login-msg-success">
+                      ✓ Código enviado para <strong>{email}</strong>! Verifique sua caixa de
+                      entrada (e a pasta de spam).
+                    </div>
+
+                    <div className="login-field-dark">
+                      <label>Seu código de acesso</label>
+                      <input
+                        type="text"
+                        value={code}
+                        onChange={(e) => setCode(e.target.value.toUpperCase())}
+                        placeholder="ABC123"
+                        required
+                        disabled={loading}
+                        autoFocus
+                        style={{ fontFamily: 'monospace', letterSpacing: '2px' }}
+                      />
+                    </div>
+
+                    {error && <div className="login-msg-error">{error}</div>}
+
+                    <button
+                      type="submit"
+                      disabled={loading || !code}
+                      className="login-submit-btn"
+                    >
+                      {loading ? 'Verificando...' : (
+                        <>
+                          Acessar
+                          <ArrowRight size={16} />
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCodeSent(false)
+                        setCode('')
+                        setError('')
+                        setRequestEmail('')
+                      }}
+                      className="login-back-btn"
+                      disabled={loading}
+                    >
+                      ← Voltar
+                    </button>
+                  </>
+                )}
+              </form>
+            )}
+
+            <div className="login-info-dark">
+              <p>🔐 Acesso privado e seguro</p>
+              <p>Código válido por 24 horas</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

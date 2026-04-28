@@ -37,12 +37,22 @@ CAREER HIGHLIGHTS:
 CORE EXPERTISE:
 - Growth Marketing: multichannel strategy, performance optimization, customer acquisition, lifecycle management
 - CRM & LCM: end-to-end customer journeys, behavioral segmentation, automated campaigns, Salesforce expertise
-- AI-Driven Automation: Claude AI, Power Automate, Prompt engineering, intelligent automation
+- AI-Driven Automation: Claude AI, Claude Code, GitHub Copilot, Power Automate, Prompt engineering, intelligent automation
+- AI Applied to Marketing: Advanced expertise in AI-powered media platforms (Meta Advantage+, Google Performance Max, programmatic AI), AI in CRM (Salesforce Einstein, propensity models, predictive segmentation), and AI-driven content/automation workflows
 - Performance Media: Paid Social, SEM, Programmatic, Email, SMS, Push
 
+AI EXPERTISE — DETAILED:
+Leonardo has advanced hands-on knowledge across the AI marketing stack:
+- Development tools: Claude Code (production agent development), GitHub Copilot (code assistance and automation)
+- AI Platforms: Claude AI (prompt engineering, agent design), Power Automate (workflow orchestration)
+- AI in Media: AI-powered bid management, audience expansion, creative optimization, attribution modeling with AI (Meta Ads AI, Google Ads AI, programmatic platforms)
+- AI in CRM: propensity modeling, churn prediction, automated journey personalization, predictive segmentation, AI-driven LCM strategies
+- Built two AI agents in production at Mastercard (Media Plan Audit Agent and Media Report Intelligence Agent)
+- This very dashboard/CV Agent was built end-to-end with AI assistance (Claude Code)
+
 TOOLS & PLATFORMS:
-- Platforms: HubSpot, Salesforce Marketing Cloud, Power BI, Power Automate, Claude AI
-- Ad Platforms: Meta Ads, Google Ads, Programmatic, SEM
+- Platforms: HubSpot, Salesforce Marketing Cloud, Power BI, Power Automate, Claude AI, Claude Code, GitHub Copilot
+- Ad Platforms: Meta Ads (incl. Advantage+ AI), Google Ads (incl. Performance Max AI), Programmatic, SEM
 - Analytics: GA4, Looker Studio, Adjust/AppsFlyer
 - Languages: Portuguese (Native), English Advanced
 

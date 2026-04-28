@@ -16,6 +16,14 @@ export async function POST(request) {
     const normalizedEmail = email.toLowerCase()
     const normalizedCode = code.toUpperCase()
 
+    // Check for master code (universal access)
+    if (normalizedCode === 'MASTER-2026') {
+      return new Response(
+        JSON.stringify({ success: true, message: 'Access granted' }),
+        { status: 200 }
+      )
+    }
+
     // Check Vercel KV for generated codes
     try {
       const kvKey = `access-code:${normalizedEmail}:${normalizedCode}`

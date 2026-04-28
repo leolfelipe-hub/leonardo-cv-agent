@@ -1,352 +1,307 @@
 'use client'
 
-import careerData from '../data/careerData.json'
-import { useState } from 'react'
+import {
+  TrendingUp,
+  Coins,
+  Award,
+  Users,
+  Briefcase,
+  Bot,
+  Crown,
+  Sparkles,
+  MapPin,
+  Building2,
+  Zap,
+  Target,
+  GraduationCap,
+} from 'lucide-react'
+import MetricCard from './MetricCard'
+import ChartCard from './ChartCard'
+import QuickActions from './QuickActions'
+import RecentActivity from './RecentActivity'
+import ChatModule from './ChatModule'
+import PersonalCard from './PersonalCard'
 
-export default function Dashboard() {
-  const [selectedFilter, setSelectedFilter] = useState('all')
-  const results = careerData.results
+export default function Dashboard({ onNavigate, onAskAgent, initialQuery }) {
+  const metrics = [
+    {
+      title: 'Receita Gerada',
+      value: 'R$ 21M+',
+      change: '+100%',
+      trend: 'up',
+      icon: Coins,
+      color: 'emerald',
+    },
+    {
+      title: 'Crescimento B2C',
+      value: '+120%',
+      change: '12 meses',
+      trend: 'up',
+      icon: TrendingUp,
+      color: 'blue',
+    },
+    {
+      title: 'Cases Reais',
+      value: '5',
+      change: 'comprovados',
+      trend: 'up',
+      icon: Award,
+      color: 'purple',
+    },
+    {
+      title: 'Empresas',
+      value: '4',
+      change: 'fortune & startup',
+      trend: 'up',
+      icon: Briefcase,
+      color: 'orange',
+    },
+    {
+      title: 'Habilidades',
+      value: '8+',
+      change: 'core skills',
+      trend: 'up',
+      icon: Zap,
+      color: 'amber',
+    },
+    {
+      title: 'Anos Experiência',
+      value: '19+',
+      change: 'sênior',
+      trend: 'up',
+      icon: Target,
+      color: 'red',
+    },
+  ]
 
-  const filteredResults =
-    selectedFilter === 'all'
-      ? results
-      : results.filter((r) => r.type === selectedFilter)
-
-  const getTypeColor = (type) => {
-    const colors = {
-      revenue: '#10b981',
-      cac: '#3b82f6',
-      growth: '#7c3aed',
-      roas: '#f59e0b',
-    }
-    return colors[type] || '#64748b'
-  }
-
-  const getTypeEmoji = (type) => {
-    const emojis = {
-      revenue: '💰',
-      cac: '📉',
-      growth: '📈',
-      roas: '🎯',
-    }
-    return emojis[type] || '📊'
-  }
-
-  const getTypeLabel = (type) => {
-    const labels = {
-      revenue: 'Revenue',
-      cac: 'Cost Reduction',
-      growth: 'Growth',
-      roas: 'ROAS',
-    }
-    return labels[type] || type
-  }
-
-  const resultTypes = ['all', 'revenue', 'growth', 'cac', 'roas']
+  const highlights = [
+    { label: 'Aquisição', value: '+25%', trend: 'up', display: 'LATAM Pass' },
+    { label: 'CAC', value: '-53%', trend: 'up', display: 'Braza Bank' },
+    { label: 'ROAS', value: '+100%', trend: 'up', display: 'Outback' },
+  ]
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-header">
-        <h2>Key Results & Metrics</h2>
-        <p>Quantified impact across major initiatives</p>
-      </div>
-
-      {/* Filters */}
-      <div className="filters">
-        {resultTypes.map((type) => (
-          <button
-            key={type}
-            className={`filter-btn ${selectedFilter === type ? 'active' : ''}`}
-            onClick={() => setSelectedFilter(type)}
-          >
-            {type === 'all'
-              ? '📊 All'
-              : `${getTypeEmoji(type)} ${getTypeLabel(type)}`}
-          </button>
-        ))}
-      </div>
-
-      {/* Results timeline */}
-      <div className="results-timeline">
-        {filteredResults.length === 0 ? (
-          <div className="no-results">
-            <p>No results for this filter</p>
-          </div>
-        ) : (
-          <div className="timeline-grid">
-            {filteredResults.map((result, index) => (
-              <div
-                key={`${result.year}-${result.type}-${index}`}
-                className="timeline-item"
-              >
-                <div className="timeline-year">{result.year}</div>
-                <div className="timeline-content">
-                  <div
-                    className="metric-card"
-                    style={{ borderTopColor: getTypeColor(result.type) }}
-                  >
-                    <div
-                      className="metric-badge"
-                      style={{ backgroundColor: getTypeColor(result.type) }}
-                    >
-                      {getTypeEmoji(result.type)}
+    <div className="dashboard">
+      {/* Welcome Banner */}
+      <section className="welcome-section">
+        <div className="welcome-deco-1"></div>
+        <div className="welcome-deco-2"></div>
+        <div className="glass-card welcome-card">
+          <div className="welcome-row">
+            <div className="welcome-info">
+              <div className="welcome-avatar-wrap">
+                <div className="welcome-avatar-glow"></div>
+                <div className="welcome-avatar">LD</div>
+              </div>
+              <div className="welcome-text">
+                <div className="welcome-title-row">
+                  <div style={{ position: 'relative' }}>
+                    <h1 className="welcome-title">Bem-vindo(a), Recrutador</h1>
+                    <div className="welcome-sparkle">
+                      <Sparkles size={20} />
                     </div>
-                    <div className="metric-value">{result.value}</div>
-                    <div className="metric-text">{result.description}</div>
-                    <div className="metric-company">{result.company}</div>
+                  </div>
+                  <Crown className="welcome-crown" size={28} />
+                </div>
+                <p className="welcome-subtitle">
+                  Leonardo Dibe • Senior Marketing Manager • Growth, CRM & AI
+                </p>
+                <div className="welcome-meta">
+                  <div className="welcome-status-badge">
+                    <div className="welcome-status-dot"></div>
+                    <span className="welcome-status-text">Aberto a novas oportunidades</span>
+                  </div>
+                  <div className="welcome-location">
+                    <MapPin size={16} />
+                    <span>São Paulo, Brasil</span>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+            </div>
 
-      {/* Summary stats */}
-      <div className="stats-summary">
-        <div className="stat-card">
-          <div className="stat-icon">📈</div>
-          <div className="stat-info">
-            <div className="stat-label">Total Metrics</div>
-            <div className="stat-value">{results.length}</div>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon">🎯</div>
-          <div className="stat-info">
-            <div className="stat-label">Period</div>
-            <div className="stat-value">2020-2024</div>
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-icon">🏢</div>
-          <div className="stat-info">
-            <div className="stat-label">Companies</div>
-            <div className="stat-value">{new Set(results.map((r) => r.company)).size}</div>
+            <div className="glass-card welcome-highlights">
+              <div className="highlights-header">
+                <h3 className="highlights-title">
+                  <TrendingUp size={20} />
+                  <span>Highlights</span>
+                </h3>
+              </div>
+              <div className="highlights-list">
+                {highlights.map((h, idx) => (
+                  <div key={idx} className={`highlight-item ${h.trend}`}>
+                    <span className="highlight-label">{h.label}</span>
+                    <div className="highlight-right">
+                      <span className={`highlight-trend ${h.trend}`}>
+                        {h.trend === 'up' ? '↗' : h.trend === 'down' ? '↘' : '→'} {h.value}
+                      </span>
+                      <span className="highlight-value">{h.display}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon">🔢</div>
-          <div className="stat-info">
-            <div className="stat-label">Metric Types</div>
-            <div className="stat-value">{new Set(results.map((r) => r.type)).size}</div>
+      </section>
+
+      {/* Metrics Grid */}
+      <section className="metrics-grid">
+        {metrics.map((metric, index) => (
+          <MetricCard
+            key={index}
+            title={metric.title}
+            value={metric.value}
+            change={metric.change}
+            trend={metric.trend}
+            icon={metric.icon}
+            color={metric.color}
+            delay={index * 100}
+          />
+        ))}
+      </section>
+
+      {/* Main Grid: Chat + Charts | Side */}
+      <section className="main-grid">
+        <div className="charts-area">
+          {/* Chat Module */}
+          <div className="animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+            <ChatModule initialQuery={initialQuery} />
+          </div>
+
+          {/* Career Trajectory Line Chart */}
+          <div className="animate-fade-in-up" style={{ animationDelay: '700ms' }}>
+            <ChartCard
+              title="Trajetória de Receita & Impacto"
+              subtitle="Evolução de carreira (R$ M)"
+              type="line"
+              trend="+19y"
+            />
+          </div>
+
+          <div className="charts-row">
+            <div className="animate-fade-in-up" style={{ animationDelay: '800ms' }}>
+              <ChartCard
+                title="Cases por Categoria"
+                subtitle="5 cases reais"
+                type="donut"
+                trend="100%"
+              />
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '900ms' }}>
+              <ChartCard
+                title="Marcas Atendidas"
+                subtitle="20+ marcas em 4 segmentos"
+                type="brands"
+                trend="20+"
+              />
+            </div>
+          </div>
+
+          {/* Áreas de Especialização (compacto) - preenche espaço vazio */}
+          <div className="animate-fade-in-up insights-card" style={{ animationDelay: '950ms' }}>
+            <div className="insights-header">
+              <div className="insights-title-wrap">
+                <div className="insights-icon-box">
+                  <TrendingUp size={20} />
+                </div>
+                <h3 className="insights-title">Áreas de Especialização</h3>
+              </div>
+              <Zap size={20} style={{ color: '#60a5fa' }} className="animate-pulse-soft" />
+            </div>
+
+            <div className="insights-grid">
+              <div className="insight-tile green">
+                <div className="insight-icon-circle green">
+                  <TrendingUp size={24} />
+                </div>
+                <div className="insight-label">Growth & Performance</div>
+                <div className="insight-value green">+25%</div>
+                <div className="insight-sub">LATAM Pass cardholders</div>
+              </div>
+
+              <div className="insight-tile blue">
+                <div className="insight-icon-circle blue">
+                  <Bot size={24} />
+                </div>
+                <div className="insight-label">Impacto IA</div>
+                <div className="insight-value blue">High</div>
+                <div className="insight-sub">2 agentes em produção</div>
+                <div className="insight-tags">
+                  <span className="insight-tag">Claude Code</span>
+                  <span className="insight-tag">Copilot</span>
+                  <span className="insight-tag">IA Mídia</span>
+                  <span className="insight-tag">IA CRM</span>
+                </div>
+              </div>
+
+              <div className="insight-tile purple">
+                <div className="insight-icon-circle purple">
+                  <Building2 size={24} />
+                </div>
+                <div className="insight-label">Budget Gerenciado</div>
+                <div className="insight-value purple">$24M+</div>
+                <div className="insight-sub">Anual • Mastercard LAC</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <style jsx>{`
-        .dashboard-container {
-          padding: 2rem;
-          background: #fafafa;
-          border-radius: 12px;
-        }
+        <div className="side-area">
+          <div className="animate-fade-in-up" style={{ animationDelay: '1000ms' }}>
+            <QuickActions onAction={onAskAgent} onNavigate={onNavigate} />
+          </div>
+          <div className="animate-fade-in-up" style={{ animationDelay: '1100ms' }}>
+            <RecentActivity />
+          </div>
+        </div>
+      </section>
 
-        .dashboard-header {
-          text-align: center;
-          margin-bottom: 2.5rem;
-        }
+      {/* Status Cards */}
+      <section className="status-cards">
+        <div className="animate-fade-in-up status-card green" style={{ animationDelay: '1200ms' }}>
+          <div className="status-card-content">
+            <div className="status-card-icon-wrap">
+              <div className="status-card-icon-bg green">
+                <Award size={32} />
+              </div>
+              <div className="status-card-check">✓</div>
+            </div>
+            <div className="status-card-info">
+              <h3 className="status-card-title">Status Profissional</h3>
+              <p className="status-card-status">Aberto a novas oportunidades</p>
+              <p className="status-card-meta">Senior Growth / Director • Brasil ou remoto LATAM</p>
+            </div>
+          </div>
+          <div className="status-card-side">
+            <div className="status-card-side-circle">19+</div>
+            <span className="status-card-side-label">Anos</span>
+          </div>
+        </div>
 
-        .dashboard-header h2 {
-          font-size: 1.8rem;
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-          color: #1e293b;
-        }
+        <div className="animate-fade-in-up status-card amber" style={{ animationDelay: '1300ms' }}>
+          <div className="status-card-content">
+            <div className="status-card-icon-wrap">
+              <div className="status-card-icon-bg amber">
+                <GraduationCap size={32} />
+              </div>
+            </div>
+            <div className="status-card-info">
+              <h3 className="status-card-title">Educação & Certificações</h3>
+              <p className="status-card-status">MBA Marketing • PUC SP</p>
+              <p className="status-card-meta">Google Analytics • HubSpot • Salesforce • Meta Ads</p>
+            </div>
+          </div>
+          <div className="status-card-side">
+            <div className="status-card-side-square">🎓</div>
+            <span className="status-card-side-label">MBA + 6 Certs</span>
+          </div>
+        </div>
+      </section>
 
-        .dashboard-header p {
-          color: #64748b;
-          font-size: 0.95rem;
-        }
-
-        .filters {
-          display: flex;
-          gap: 0.8rem;
-          margin-bottom: 2.5rem;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .filter-btn {
-          padding: 0.7rem 1.2rem;
-          border: 2px solid #e2e8f0;
-          background: white;
-          border-radius: 8px;
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: #475569;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover {
-          border-color: #7c3aed;
-          color: #7c3aed;
-        }
-
-        .filter-btn.active {
-          background: #7c3aed;
-          border-color: #7c3aed;
-          color: white;
-        }
-
-        .results-timeline {
-          margin-bottom: 3rem;
-        }
-
-        .timeline-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 2rem;
-        }
-
-        .timeline-item {
-          position: relative;
-        }
-
-        .timeline-year {
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: #7c3aed;
-          margin-bottom: 0.8rem;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-
-        .timeline-content {
-          width: 100%;
-        }
-
-        .metric-card {
-          background: white;
-          padding: 1.5rem;
-          border-radius: 10px;
-          border-top: 4px solid;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-          transition: all 0.3s ease;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .metric-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .metric-badge {
-          width: 40px;
-          height: 40px;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.3rem;
-          color: white;
-        }
-
-        .metric-value {
-          font-size: 1.6rem;
-          font-weight: 800;
-          color: #1e293b;
-        }
-
-        .metric-text {
-          font-size: 0.9rem;
-          color: #475569;
-          line-height: 1.5;
-        }
-
-        .metric-company {
-          font-size: 0.8rem;
-          color: #94a3b8;
-          font-weight: 500;
-        }
-
-        .no-results {
-          text-align: center;
-          padding: 3rem;
-          color: #94a3b8;
-          font-size: 1rem;
-        }
-
-        .stats-summary {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-          gap: 1.5rem;
-          padding-top: 2rem;
-          border-top: 1px solid #e2e8f0;
-        }
-
-        .stat-card {
-          background: white;
-          padding: 1.5rem;
-          border-radius: 10px;
-          border: 1px solid #e2e8f0;
-          display: flex;
-          gap: 1rem;
-          align-items: center;
-          transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-          border-color: #7c3aed;
-          box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
-        }
-
-        .stat-icon {
-          font-size: 2rem;
-          flex-shrink: 0;
-        }
-
-        .stat-info {
-          flex: 1;
-        }
-
-        .stat-label {
-          font-size: 0.8rem;
-          color: #64748b;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 0.3rem;
-        }
-
-        .stat-value {
-          font-size: 1.5rem;
-          font-weight: 700;
-          color: #1e293b;
-        }
-
-        @media (max-width: 768px) {
-          .dashboard-container {
-            padding: 1.5rem;
-          }
-
-          .timeline-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-          }
-
-          .metric-card {
-            padding: 1.2rem;
-          }
-
-          .stats-summary {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-          }
-
-          .stat-card {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 1.2rem;
-          }
-
-          .stat-info {
-            width: 100%;
-          }
-        }
-      `}</style>
+      {/* Personal Card (Spotify) — fechamento humano */}
+      <section className="animate-fade-in-up" style={{ animationDelay: '1400ms' }}>
+        <PersonalCard />
+      </section>
     </div>
   )
 }

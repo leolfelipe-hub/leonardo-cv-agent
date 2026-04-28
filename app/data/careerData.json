@@ -1,6 +1,29 @@
 {
   "timeline": [
     {
+      "id": 0,
+      "company": "Experiências Anteriores",
+      "position": "Coordenação de Marketing & Planejamento de Mídia",
+      "startDate": "2006-01",
+      "endDate": "2013-06",
+      "duration": "7+ anos",
+      "location": "Brasil",
+      "teamSize": "—",
+      "budget": "—",
+      "description": "Base inicial da carreira em planejamento de mídia, atendimento e coordenação de marketing em diferentes segmentos (educação, construção e agências).",
+      "responsibilities": [
+        "Homex Brasil — Coordenador de Marketing (2010-2013)",
+        "Federal Cursos — Marketing & Mídia (2008-2010)",
+        "Mr. Wolf, Nilo Group, DPP Comunicação — Planejamento de Mídia e Atendimento (2006-2010)"
+      ],
+      "keyResults": [
+        "Fundação técnica em mídia, planejamento e atendimento",
+        "Atuação em segmentos diversos: educação, construção e agências de comunicação",
+        "Construção da base que sustenta os 19+ anos de carreira"
+      ],
+      "isPrevious": true
+    },
+    {
       "id": 1,
       "company": "Accor Hotels S/A",
       "position": "Coordenador de Marketing e Comunicação – LATAM",
@@ -78,7 +101,7 @@
       "position": "Gerente Sênior de Marketing | Growth e Performance",
       "startDate": "2024-08",
       "endDate": "presente",
-      "duration": "8+ meses",
+      "duration": "1 ano e 8 meses",
       "location": "São Paulo, Brasil",
       "teamSize": "15 pessoas",
       "budget": "Orçamento de mídia R$ 50M+ anual",
@@ -184,10 +207,10 @@
     { "skill": "Growth Marketing", "level": 5, "yearsExperience": 10, "description": "Escalando receita em startups e enterprise" },
     { "skill": "CRM e Gestão de Ciclo de Vida", "level": 5, "yearsExperience": 8, "description": "Design e automação de jornada de cliente end-to-end" },
     { "skill": "Mídia de Performance", "level": 5, "yearsExperience": 9, "description": "Mídia social paga, SEM, programática, atribuição" },
-    { "skill": "Data Analytics", "level": 4, "yearsExperience": 8, "description": "Power BI, GA4, Looker, construção de dashboards" },
-    { "skill": "Automação com IA", "level": 4, "yearsExperience": 2, "description": "Engenharia de prompts de IA, sistemas agentic, automação" },
-    { "skill": "Liderança Ágil", "level": 4, "yearsExperience": 7, "description": "Liderança de times de 10-15 em diferentes geografias" },
-    { "skill": "Estratégia de Marca", "level": 3, "yearsExperience": 5, "description": "Posicionamento, rebranding, poder de marca" },
+    { "skill": "Data Analytics", "level": 5, "yearsExperience": 8, "description": "Power BI, GA4, Looker, construção de dashboards" },
+    { "skill": "Automação com IA", "level": 5, "yearsExperience": 2, "description": "Engenharia de prompts de IA, sistemas agentic, automação" },
+    { "skill": "Liderança Ágil", "level": 5, "yearsExperience": 7, "description": "Liderança de times de 10-15 em diferentes geografias" },
+    { "skill": "Estratégia de Marca", "level": 5, "yearsExperience": 5, "description": "Posicionamento, rebranding, poder de marca" },
     { "skill": "Gestão de Orçamento", "level": 5, "yearsExperience": 10, "description": "Orçamentos de 50M+ anuais, otimização de ROI" }
   ],
   "results": [
