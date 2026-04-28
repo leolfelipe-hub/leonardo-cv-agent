@@ -1,6 +1,6 @@
-import { Resend } from 'resend'
+import sgMail from '@sendgrid/mail'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 function generateToken() {
   return Math.random().toString(36).substring(2, 8).toUpperCase()
@@ -18,7 +18,6 @@ export async function POST(request) {
     }
 
     const token = generateToken()
-    const expiresAt = Date.now() + 24 * 60 * 60 * 1000
 
     const emailHtml = `
       <h2>Seu Código de Acesso</h2>
@@ -32,9 +31,9 @@ export async function POST(request) {
       <p>Abraços,<br/>Leonardo Dibe</p>
     `
 
-    await resend.emails.send({
-      from: process.env.SENDER_EMAIL,
+    await sgMail.send({
       to: email,
+      from: process.env.SENDER_EMAIL,
       subject: 'Seu código de acesso - Assistente de IA Leonardo Dibe',
       html: emailHtml,
     })
