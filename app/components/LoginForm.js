@@ -216,7 +216,7 @@ export default function LoginForm({ onLoginSuccess }) {
                     type="text"
                     value={code}
                     onChange={(e) => setCode(e.target.value.toUpperCase())}
-                    placeholder="MASTER-2026"
+                    placeholder="Insira seu código"
                     required
                     disabled={loading}
                     autoFocus
@@ -289,7 +289,7 @@ export default function LoginForm({ onLoginSuccess }) {
                         type="text"
                         value={code}
                         onChange={(e) => setCode(e.target.value.toUpperCase())}
-                        placeholder="ABC123"
+                        placeholder="Insira o código recebido"
                         required
                         disabled={loading}
                         autoFocus
