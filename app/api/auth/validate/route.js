@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { kv } from '@vercel/kv'
 
 export async function POST(request) {
   try {
@@ -15,27 +16,14 @@ export async function POST(request) {
     const normalizedEmail = email.toLowerCase()
     const normalizedCode = code.toUpperCase()
 
-    // Check generated codes first
-    const codesPath = path.join(process.cwd(), 'generated-codes.json')
-    if (fs.existsSync(codesPath)) {
-      const codesData = fs.readFileSync(codesPath, 'utf-8')
-      const codes = JSON.parse(codesData)
+    // Check Vercel KV for generated codes
+    try {
+      const kvKey = `access-code:${normalizedEmail}:${normalizedCode}`
+      const kvEntry = await kv.get(kvKey)
 
-      const generatedEntry = codes.codes.find(
-        (c) => c.code === normalizedCode && c.email === normalizedEmail
-      )
-
-      if (generatedEntry) {
-        // Check expiration
-        if (new Date(generatedEntry.expiresAt) < new Date()) {
-          return new Response(
-            JSON.stringify({ success: false, message: 'Código expirado' }),
-            { status: 401 }
-          )
-        }
-
+      if (kvEntry) {
         // Check if already used
-        if (generatedEntry.used) {
+        if (kvEntry.used) {
           return new Response(
             JSON.stringify({ success: false, message: 'Código já foi usado' }),
             { status: 401 }
@@ -43,15 +31,15 @@ export async function POST(request) {
         }
 
         // Mark as used
-        generatedEntry.used = true
-        generatedEntry.usedAt = new Date().toISOString()
-        fs.writeFileSync(codesPath, JSON.stringify(codes, null, 2))
+        await kv.set(kvKey, { ...kvEntry, used: true }, { ex: 86400 })
 
         return new Response(
           JSON.stringify({ success: true, message: 'Access granted' }),
           { status: 200 }
         )
       }
+    } catch (kvError) {
+      console.log('KV check skipped:', kvError.message)
     }
 
     // Check static passwords file

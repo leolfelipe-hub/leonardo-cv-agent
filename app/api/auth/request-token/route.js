@@ -1,35 +1,10 @@
 import sgMail from '@sendgrid/mail'
-import fs from 'fs'
-import path from 'path'
+import { kv } from '@vercel/kv'
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 function generateToken() {
   return Math.random().toString(36).substring(2, 8).toUpperCase()
-}
-
-function saveGeneratedCode(email, code) {
-  try {
-    const codesPath = path.join(process.cwd(), 'generated-codes.json')
-    let codesData = { codes: [] }
-
-    if (fs.existsSync(codesPath)) {
-      const fileContent = fs.readFileSync(codesPath, 'utf-8')
-      codesData = JSON.parse(fileContent)
-    }
-
-    codesData.codes.push({
-      email: email.toLowerCase(),
-      code: code.toUpperCase(),
-      createdAt: new Date().toISOString(),
-      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-      used: false,
-    })
-
-    fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2))
-  } catch (error) {
-    console.error('Erro ao salvar código:', error)
-  }
 }
 
 export async function POST(request) {
@@ -44,6 +19,7 @@ export async function POST(request) {
     }
 
     const token = generateToken()
+    const normalizedEmail = email.toLowerCase()
 
     const emailHtml = `
       <h2>Seu Código de Acesso</h2>
@@ -64,7 +40,9 @@ export async function POST(request) {
       html: emailHtml,
     })
 
-    saveGeneratedCode(email, token)
+    // Save to Vercel KV with 24 hour expiration
+    const key = `access-code:${normalizedEmail}:${token}`
+    await kv.set(key, { email: normalizedEmail, used: false }, { ex: 86400 })
 
     return new Response(
       JSON.stringify({
