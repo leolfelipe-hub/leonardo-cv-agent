@@ -32,21 +32,29 @@ export default function LoginForm({ onLoginSuccess }) {
     setSuccess('')
     setLoading(true)
 
+    // Tab 1 (have-code) usa email vazio — só funciona pro MASTER
+    // Tab 2 (request-code) usa o email guardado em estado
+    const validationEmail = mode === 'have-code' ? '' : email
+
     try {
       const response = await fetch('/api/auth/validate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, code }),
+        body: JSON.stringify({ email: validationEmail, code }),
       })
 
       const data = await response.json()
 
       if (data.success) {
         localStorage.setItem('authenticated', 'true')
-        localStorage.setItem('userEmail', email)
+        if (validationEmail) localStorage.setItem('userEmail', validationEmail)
         onLoginSuccess()
       } else {
-        setError(data.message || 'Código inválido')
+        setError(
+          mode === 'have-code'
+            ? 'Código inválido. Se você recebeu o código por email, use a aba "Solicitar código".'
+            : data.message || 'Código inválido'
+        )
       }
     } catch (err) {
       setError('Erro na conexão. Tente novamente.')
@@ -139,33 +147,24 @@ export default function LoginForm({ onLoginSuccess }) {
           </h1>
 
           <div className="login-hero-text">
-            Como um bom <strong>growth hacker</strong>, achei que nada melhor do que um{' '}
-            <strong>dashboard com inteligência artificial</strong> pra mostrar um pouco da minha
-            trajetória.
-          </div>
-
-          <div className="login-hero-text">
-            Faça login pra explorar <strong className="accent">19+ anos de carreira</strong>,{' '}
-            <strong className="accent">5 cases reais</strong> com números e marcas como{' '}
-            <strong>Mastercard, Braza Bank, Outback e Accor</strong>.
+            Como bom <strong>growth hacker</strong>, criei um{' '}
+            <strong>dashboard com IA</strong> pra contar minha trajetória de{' '}
+            <strong className="accent">19+ anos</strong> em Growth, CRM e Performance — com cases
+            reais em <strong>Mastercard, Braza Bank, Outback e Accor</strong>.
           </div>
 
           <div className="login-hero-text ai-line">
             <Bot size={20} style={{ color: 'var(--accent-amber)', flexShrink: 0, marginTop: '2px' }} />
             <span>
-              <strong>E o melhor:</strong> tudo aqui foi construído com IA — incluindo um{' '}
-              <strong>agente</strong> com quem você pode conversar pra aprofundar em qualquer tema
-              da minha carreira.
+              Tudo aqui foi feito com IA, inclusive um <strong>agente</strong> que conversa sobre
+              qualquer tema da minha carreira.
             </span>
           </div>
 
           <div className="login-hero-cta-line">
-            E depois de navegar um pouco, <strong>me manda um WhatsApp</strong> 💬 pra gente
-            trocar uma ideia — vai ser um prazer contar mais detalhes.
-            <br />
-            <br />
-            Se preferir o CV no formato tradicional, ele também está disponível dentro do dash.{' '}
-            <strong>Boa análise!</strong>
+            💬 Depois que navegar, <strong>me chama no WhatsApp</strong> pra gente trocar uma
+            ideia. Caso precise, o <strong>CV tradicional em PDF</strong> também tá disponível pra
+            baixar no dash. <strong>Boa análise!</strong>
           </div>
 
           <div className="login-hero-pills">
@@ -212,26 +211,15 @@ export default function LoginForm({ onLoginSuccess }) {
             {mode === 'have-code' && (
               <form onSubmit={handleSubmitCode} className="login-form-dark">
                 <div className="login-field-dark">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="seu@email.com"
-                    required
-                    disabled={loading}
-                  />
-                </div>
-
-                <div className="login-field-dark">
                   <label>Código de Acesso</label>
                   <input
                     type="text"
                     value={code}
                     onChange={(e) => setCode(e.target.value.toUpperCase())}
-                    placeholder="ABC123"
+                    placeholder="MASTER-2026"
                     required
                     disabled={loading}
+                    autoFocus
                     style={{ fontFamily: 'monospace', letterSpacing: '2px' }}
                   />
                 </div>
@@ -241,7 +229,7 @@ export default function LoginForm({ onLoginSuccess }) {
 
                 <button
                   type="submit"
-                  disabled={loading || !email || !code}
+                  disabled={loading || !code}
                   className="login-submit-btn"
                 >
                   {loading ? 'Verificando...' : (

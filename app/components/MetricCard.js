@@ -8,20 +8,19 @@ export default function MetricCard({ title, value, change, trend, icon: Icon, co
       className="metric-card animate-fade-in-up"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="metric-card-row">
+      <div className="metric-card-header">
         <div className={`metric-icon ${color}`}>
-          <Icon size={20} />
+          <Icon size={22} />
         </div>
-
-        <div className="metric-card-mid">
-          <h3 className="metric-value">{value}</h3>
-          <p className="metric-label">{title}</p>
-        </div>
-
         <div className={`metric-trend ${trend}`}>
           {trend === 'up' ? <TrendingUp size={11} /> : <TrendingDown size={11} />}
           <span>{change}</span>
         </div>
+      </div>
+
+      <div className="metric-card-body">
+        <h3 className="metric-value">{value}</h3>
+        <p className="metric-label">{title}</p>
       </div>
 
       <div className="metric-progress-track">

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Search, MapPin, Clock, HardDrive, LogOut, Menu, Bot } from 'lucide-react'
+import { Search, MapPin, Clock, HardDrive, LogOut, Menu, Bot, MessageCircle } from 'lucide-react'
 
 export default function TopNavigation({ onLogout, onSearch, onMobileMenu, onTalkToAgent }) {
   const [time, setTime] = useState('')
@@ -40,7 +40,8 @@ export default function TopNavigation({ onLogout, onSearch, onMobileMenu, onTalk
             title="Abrir menu"
             aria-label="Abrir menu"
           >
-            <Menu size={20} />
+            <Menu size={18} />
+            <span className="topnav-mobile-menu-label">Menu</span>
           </button>
 
           <div className="topnav-brand">
@@ -73,6 +74,18 @@ export default function TopNavigation({ onLogout, onSearch, onMobileMenu, onTalk
             <Bot size={16} />
             <span className="topnav-cta-talk-label">Falar com IA</span>
           </button>
+
+          {/* CTA WhatsApp - direto pro contato */}
+          <a
+            href="https://wa.me/5511982976543?text=Ol%C3%A1%20Leonardo!%20Vi%20seu%20CV%20Agent%20e%20gostaria%20de%20conversar."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="topnav-cta-whats"
+            title="Conversar no WhatsApp"
+            aria-label="Conversar no WhatsApp"
+          >
+            <MessageCircle size={16} />
+          </a>
 
           <div className="topnav-info">
             <div className="topnav-info-item">

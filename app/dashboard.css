@@ -332,22 +332,29 @@
 
 .topnav-mobile-menu {
   display: none;
-  width: 36px;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px 7px 10px;
   height: 36px;
   border-radius: 8px;
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid rgba(71, 85, 105, 0.3);
   color: var(--accent-amber);
   cursor: pointer;
-  align-items: center;
-  justify-content: center;
   transition: all 0.3s ease;
   flex-shrink: 0;
   margin-right: 12px;
+  font-family: inherit;
 }
 
 .topnav-mobile-menu:hover {
   background: rgba(251, 191, 36, 0.15);
+}
+
+.topnav-mobile-menu-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* CTA Falar com IA — sempre visível */
@@ -377,6 +384,28 @@
 
 .topnav-cta-talk-label {
   white-space: nowrap;
+}
+
+/* CTA WhatsApp (ícone só) */
+.topnav-cta-whats {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  flex-shrink: 0;
+}
+
+.topnav-cta-whats:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 211, 102, 0.4);
 }
 
 .main-area {
@@ -1307,12 +1336,14 @@
 .metric-card {
   position: relative;
   overflow: hidden;
-  padding: 14px 16px;
-  border-radius: 12px;
+  padding: 18px 16px;
+  border-radius: 14px;
   backdrop-filter: blur(20px);
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), transparent);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 .metric-card:hover {
@@ -1321,16 +1352,18 @@
   box-shadow: 0 12px 30px rgba(251, 191, 36, 0.1);
 }
 
-.metric-card-row {
+.metric-card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .metric-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1350,16 +1383,15 @@
 .metric-icon.red { background: linear-gradient(135deg, #ef4444, #ec4899); }
 .metric-icon.cyan { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
 
-.metric-card-mid {
-  flex: 1;
-  min-width: 0;
+.metric-card-body {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  min-width: 0;
 }
 
 .metric-trend {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 3px;
   padding: 4px 8px;
@@ -1384,26 +1416,22 @@
 }
 
 .metric-value {
-  font-size: 1.15rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: white;
-  line-height: 1.1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .metric-label {
   color: var(--text-secondary);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.3;
 }
 
 .metric-progress-track {
-  margin-top: 10px;
+  margin-top: 12px;
   height: 4px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 999px;
