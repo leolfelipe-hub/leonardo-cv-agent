@@ -47,3 +47,6 @@ ehthumbs.db
 # Misc
 .cache/
 dist/
+
+# Sensitive files
+passwords.json

@@ -1,0 +1,202 @@
+{
+  "timeline": [
+    {
+      "id": 1,
+      "company": "Accor Hotels S/A",
+      "position": "Coordenador de Marketing e Comunicação – LATAM",
+      "startDate": "2013-07",
+      "endDate": "2015-04",
+      "duration": "1 ano e 8 meses",
+      "location": "América Latina",
+      "teamSize": "Pequeno time",
+      "budget": "Não especificado",
+      "description": "Líder multinacional francês em hospitalidade com operações em 7 países da América Latina.",
+      "responsibilities": [
+        "Comunicação institucional e de marca (Novotel, Ibis, Mercure, Adagio, Pullman)",
+        "Lançamento das marcas Grand Mercure, Ibis Styles e Adagio no Brasil",
+        "Campanhas especiais Copa do Mundo 2014",
+        "Comunicação interna e gestão de imprensa em 7 países"
+      ],
+      "keyResults": [
+        "Lançamento de marcas no Brasil",
+        "Gestão de comunicação regional",
+        "Coordenação em 7 países"
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Outback Steakhouse Brasil - Bloomin' Brands",
+      "position": "Gerente de Marketing Digital e Performance",
+      "startDate": "2015-05",
+      "endDate": "2021-05",
+      "duration": "6 anos",
+      "location": "São Paulo, Brasil",
+      "teamSize": "15 pessoas",
+      "budget": "Não especificado",
+      "description": "Líder casual dining group operando 5 marcas. Responsável pela digitalização da jornada e escalabilidade de receita.",
+      "responsibilities": [
+        "Gestão de canais digitais em 5 marcas",
+        "Mídia paga e marketing de performance",
+        "Crescimento e otimização do canal delivery",
+        "Gestão do ecossistema de agências (19 agências)",
+        "Marketing em redes sociais e influenciadores"
+      ],
+      "keyResults": [
+        "R$ 21M em vendas incrementais delivery (2020)",
+        "Crescimento de 400k para 1.9M seguidores (2018-2019)",
+        "Liderança de 19 agências e time de 15 pessoas"
+      ]
+    },
+    {
+      "id": 3,
+      "company": "Braza Bank / Braza On",
+      "position": "Head de Marketing | Gerente de CRM e Growth Marketing",
+      "startDate": "2022-05",
+      "endDate": "2024-08",
+      "duration": "2 anos e 3 meses",
+      "location": "São Paulo, Brasil",
+      "teamSize": "10 pessoas",
+      "budget": "Focado em crescimento",
+      "description": "Fintech brasileira focada em contas digitais multi-moeda. Liderança da função marketing completa.",
+      "responsibilities": [
+        "Liderança de função marketing completa",
+        "Estratégia de CRM e gestão de ciclo de vida",
+        "Implementação HubSpot end-to-end",
+        "Rebranding e reposicionamento de marca",
+        "Inteligência de marketing e analytics",
+        "Ecossistema de aquisição multicanal"
+      ],
+      "keyResults": [
+        "+120% crescimento de base B2C em 12 meses",
+        "Redução de CAC 53%",
+        "Taxa de cliente ativo: 20% para 44%"
+      ]
+    },
+    {
+      "id": 4,
+      "company": "Mastercard - Marketing Services",
+      "position": "Gerente Sênior de Marketing | Growth e Performance",
+      "startDate": "2024-08",
+      "endDate": "presente",
+      "duration": "8+ meses",
+      "location": "São Paulo, Brasil",
+      "teamSize": "15 pessoas",
+      "budget": "Orçamento de mídia R$ 50M+ anual",
+      "description": "Divisão de consultoria estratégica liderando projetos de CRM, mídia paga e ciclo de vida para grandes emissores.",
+      "responsibilities": [
+        "Estratégia de CRM e ciclo de vida para grandes emissores (LATAM Pass, Sicredi, Bradesco, Mercado Pago, Stone)",
+        "Otimização de mídia paga e alocação de orçamento",
+        "Automação com IA e sistemas agentic",
+        "Liderança de times cross-funcionais",
+        "Consultoria estratégica para orçamento de 50M+"
+      ],
+      "keyResults": [
+        "+25% crescimento de titulares LATAM Pass",
+        "+24% receita LATAM Pass, +35% Sicredi",
+        "+13% receita incremental UEFA Bradesco",
+        "Redução de CPA aquisição 50%",
+        "Redução de churn 10%"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": 1,
+      "title": "LATAM Pass Mastercard",
+      "tagline": "Crescimento e Otimização de CPA",
+      "company": "Mastercard",
+      "year": "2024-2025",
+      "problem": "LATAM Pass Mastercard precisava crescer sua base de titulares enquanto reduzia o custo de aquisição de clientes.",
+      "approach": "Estratégia integrada de CRM e Mídia Paga com segmentação comportamental e direcionamento personalizado de ofertas",
+      "results": [
+        { "metric": "+25%", "description": "Crescimento da base de novos titulares em 6 meses" },
+        { "metric": "+21%", "description": "Receita incremental em campanha promocional" },
+        { "metric": "50%", "description": "Redução de CPA através de otimização" }
+      ],
+      "methods": ["Estratégia de CRM", "Mídia Paga", "Segmentação Comportamental", "A/B Testing"],
+      "category": "acquisition"
+    },
+    {
+      "id": 2,
+      "title": "LATAM Pass & Sicredi LCM",
+      "tagline": "Excelência em Gestão de Ciclo de Vida",
+      "company": "Mastercard",
+      "year": "2024-2025",
+      "problem": "Múltiplos emissores precisavam de gestão de ciclo de vida omnichannel com jornadas segmentadas e gatilhos automáticos.",
+      "approach": "Estratégia LCM omnichannel cobrindo desbloqueio, ativação, monetização e reativação com modelos de propensão",
+      "results": [
+        { "metric": "+24%", "description": "Aumento de receita LATAM Pass" },
+        { "metric": "+35%", "description": "Aumento de receita Sicredi" },
+        { "metric": "+17%", "description": "Lift médio em campanhas de crescimento Sicredi" }
+      ],
+      "methods": ["CRM", "Gestão de Ciclo de Vida", "Propensão Modeling", "Automação"],
+      "category": "crm"
+    },
+    {
+      "id": 3,
+      "title": "UEFA Bradesco Mastercard",
+      "tagline": "Receita Impulsionada por Campanha",
+      "company": "Mastercard",
+      "year": "2024-2025",
+      "problem": "Bradesco precisava de receita incremental de uma campanha temática UEFA com CRM e mídia integrados.",
+      "approach": "Estratégia 360 graus combinando CRM e mídia paga com segmentos de público direcionados",
+      "results": [
+        { "metric": "+13%", "description": "Receita incremental vs. grupo de controle" },
+        { "metric": "360°", "description": "Execução de estratégia integrada" }
+      ],
+      "methods": ["Estratégia de CRM", "Mídia Paga", "Gestão de Campanha"],
+      "category": "media"
+    },
+    {
+      "id": 4,
+      "title": "Crescimento B2C Braza Bank",
+      "tagline": "Aceleração de Crescimento Fintech",
+      "company": "Braza Bank",
+      "year": "2022-2023",
+      "problem": "Startup fintech precisava de crescimento rápido de base B2C com redução significativa no custo de aquisição.",
+      "approach": "Estratégia digital de performance multicanal com automação HubSpot e otimização contínua",
+      "results": [
+        { "metric": "+120%", "description": "Crescimento de base B2C em 12 meses" },
+        { "metric": "-53%", "description": "Redução de CAC" },
+        { "metric": "44%", "description": "Taxa de cliente ativo (de 20%)" }
+      ],
+      "methods": ["Growth Marketing", "Automação CRM", "Mídia de Performance", "Estratégia Multicanal"],
+      "category": "growth"
+    },
+    {
+      "id": 5,
+      "title": "Receita Delivery Outback",
+      "tagline": "Maestria do Canal Delivery",
+      "company": "Outback Steakhouse Brasil",
+      "year": "2020",
+      "problem": "Casual dining group precisava escalar vendas de delivery em mercado competitivo com orçamento limitado.",
+      "approach": "Modelo de atribuição multicanal com realocação contínua de orçamento baseada em dados de conversão e segmentação comportamental",
+      "results": [
+        { "metric": "R$ 21M", "description": "Vendas incrementais de delivery" },
+        { "metric": "+100%", "description": "ROAS (Retorno sobre Gasto em Publicidade)" },
+        { "metric": "1.9M", "description": "Seguidores em redes sociais (de 400k para 1.9M)" }
+      ],
+      "methods": ["Mídia de Performance", "Atribuição Multicanal", "Segmentação Comportamental", "Social Pago"],
+      "category": "media"
+    }
+  ],
+  "expertise": [
+    { "skill": "Growth Marketing", "level": 5, "yearsExperience": 10, "description": "Escalando receita em startups e enterprise" },
+    { "skill": "CRM e Gestão de Ciclo de Vida", "level": 5, "yearsExperience": 8, "description": "Design e automação de jornada de cliente end-to-end" },
+    { "skill": "Mídia de Performance", "level": 5, "yearsExperience": 9, "description": "Mídia social paga, SEM, programática, atribuição" },
+    { "skill": "Data Analytics", "level": 4, "yearsExperience": 8, "description": "Power BI, GA4, Looker, construção de dashboards" },
+    { "skill": "Automação com IA", "level": 4, "yearsExperience": 2, "description": "Engenharia de prompts de IA, sistemas agentic, automação" },
+    { "skill": "Liderança Ágil", "level": 4, "yearsExperience": 7, "description": "Liderança de times de 10-15 em diferentes geografias" },
+    { "skill": "Estratégia de Marca", "level": 3, "yearsExperience": 5, "description": "Posicionamento, rebranding, poder de marca" },
+    { "skill": "Gestão de Orçamento", "level": 5, "yearsExperience": 10, "description": "Orçamentos de 50M+ anuais, otimização de ROI" }
+  ],
+  "results": [
+    { "year": 2024, "type": "revenue", "value": "+35%", "description": "Aumento de receita Sicredi via LCM", "company": "Mastercard" },
+    { "year": 2024, "type": "cac", "value": "-50%", "description": "Redução de CPA através de otimização", "company": "Mastercard" },
+    { "year": 2024, "type": "growth", "value": "+25%", "description": "Crescimento de titulares LATAM Pass", "company": "Mastercard" },
+    { "year": 2023, "type": "revenue", "value": "+120%", "description": "Crescimento de base B2C", "company": "Braza Bank" },
+    { "year": 2023, "type": "cac", "value": "-53%", "description": "Redução de CAC", "company": "Braza Bank" },
+    { "year": 2020, "type": "revenue", "value": "R$ 21M", "description": "Vendas incrementais de delivery", "company": "Outback" },
+    { "year": 2020, "type": "roas", "value": "+100%", "description": "ROAS em mídia de delivery", "company": "Outback" }
+  ]
+}
