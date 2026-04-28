@@ -1,9 +1,35 @@
 import sgMail from '@sendgrid/mail'
+import fs from 'fs'
+import path from 'path'
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 function generateToken() {
   return Math.random().toString(36).substring(2, 8).toUpperCase()
+}
+
+function saveGeneratedCode(email, code) {
+  try {
+    const codesPath = path.join(process.cwd(), 'generated-codes.json')
+    let codesData = { codes: [] }
+
+    if (fs.existsSync(codesPath)) {
+      const fileContent = fs.readFileSync(codesPath, 'utf-8')
+      codesData = JSON.parse(fileContent)
+    }
+
+    codesData.codes.push({
+      email: email.toLowerCase(),
+      code: code.toUpperCase(),
+      createdAt: new Date().toISOString(),
+      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+      used: false,
+    })
+
+    fs.writeFileSync(codesPath, JSON.stringify(codesData, null, 2))
+  } catch (error) {
+    console.error('Erro ao salvar código:', error)
+  }
 }
 
 export async function POST(request) {
@@ -37,6 +63,8 @@ export async function POST(request) {
       subject: 'Seu código de acesso - Assistente de IA Leonardo Dibe',
       html: emailHtml,
     })
+
+    saveGeneratedCode(email, token)
 
     return new Response(
       JSON.stringify({

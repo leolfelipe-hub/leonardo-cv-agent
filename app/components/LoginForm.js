@@ -56,7 +56,10 @@ export default function LoginForm({ onLoginSuccess }) {
 
       if (data.success) {
         setSuccess('Código enviado para seu email! Verifique sua caixa de entrada.')
-        setEmail('')
+        setTimeout(() => {
+          setMode('have-code')
+          setSuccess('')
+        }, 2000)
       } else {
         setError(data.error || 'Erro ao solicitar código')
       }
