@@ -70,35 +70,50 @@ export default function AppLayout({ onLogout }) {
     }
   }
 
+  const BackButton = () => (
+    <button
+      onClick={() => handleSectionChange('dashboard')}
+      className="back-to-dash-btn"
+      type="button"
+    >
+      ← Voltar ao Dashboard
+    </button>
+  )
+
   const renderSection = () => {
     switch (activeSection) {
       case 'timeline':
         return (
           <div className="dashboard">
+            <BackButton />
             <Timeline />
           </div>
         )
       case 'cases':
         return (
           <div className="dashboard">
+            <BackButton />
             <CaseExplorer />
           </div>
         )
       case 'expertise':
         return (
           <div className="dashboard">
+            <BackButton />
             <ExpertiseRadar />
           </div>
         )
       case 'certifications':
         return (
           <div className="dashboard">
+            <BackButton />
             <Certifications />
           </div>
         )
       case 'chat':
         return (
           <div className="dashboard">
+            <BackButton />
             <div style={{ maxWidth: '900px', margin: '0 auto', width: '100%' }}>
               <ChatModule initialQuery={searchQuery} />
             </div>
@@ -107,6 +122,7 @@ export default function AppLayout({ onLogout }) {
       case 'contact':
         return (
           <div className="dashboard">
+            <BackButton />
             <div className="section-card">
               <div className="section-header">
                 <h2>Vamos Conversar?</h2>
