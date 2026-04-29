@@ -29,6 +29,13 @@ export default function AppLayout({ onLogout }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
+  // Scroll para o topo ao entrar/trocar de seção
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    const dashScroll = document.querySelector('.dashboard-scroll')
+    if (dashScroll) dashScroll.scrollTop = 0
+  }, [activeSection])
+
   const handleSectionChange = (section) => {
     if (section === 'cv') {
       window.open('/CV-PT.pdf', '_blank')
