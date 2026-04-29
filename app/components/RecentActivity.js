@@ -13,8 +13,7 @@ export default function RecentActivity({ onAskAgent }) {
       status: 'success',
       tag: 'AI',
       color: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-      prompt:
-        'Me explique resumidamente, em até 4 linhas, o Media Plan Audit Agent que o Leonardo construiu na Mastercard, e termine perguntando se eu quero aprofundar nesse caso.',
+      prompt: 'Me fala sobre o Media Plan Audit Agent que o Leonardo construiu na Mastercard.',
     },
     {
       id: 2,
@@ -26,7 +25,7 @@ export default function RecentActivity({ onAskAgent }) {
       tag: 'GROWTH',
       color: 'linear-gradient(135deg, #10b981, #0d9488)',
       prompt:
-        'Resuma em até 4 linhas o case do LATAM Pass Mastercard com +25% de novos cardholders e CPA reduzido em 50%, e termine perguntando se eu quero detalhes da estratégia.',
+        'Me fala sobre o case do LATAM Pass na Mastercard: +25% cardholders e CPA -50%.',
     },
     {
       id: 3,
@@ -37,8 +36,7 @@ export default function RecentActivity({ onAskAgent }) {
       status: 'success',
       tag: 'CRM',
       color: 'linear-gradient(135deg, #f59e0b, #ea580c)',
-      prompt:
-        'Conte rapidamente, em até 4 linhas, o case do Sicredi com +35% de receita via LCM omnicanal, e termine perguntando se eu quero aprofundar nesse caso.',
+      prompt: 'Me fala sobre o case do Sicredi na Mastercard: +35% de receita via LCM omnicanal.',
     },
     {
       id: 4,
@@ -50,7 +48,7 @@ export default function RecentActivity({ onAskAgent }) {
       tag: 'GROWTH',
       color: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
       prompt:
-        'Resuma em até 4 linhas o crescimento de 120% da base B2C do Braza Bank com CAC reduzido em 53%, e termine perguntando se eu quero saber mais detalhes.',
+        'Me fala sobre o crescimento da base B2C no Braza Bank: +120% em 12 meses e CAC -53%.',
     },
     {
       id: 5,
@@ -62,7 +60,7 @@ export default function RecentActivity({ onAskAgent }) {
       tag: 'REVENUE',
       color: 'linear-gradient(135deg, #f97316, #dc2626)',
       prompt:
-        'Resuma em até 4 linhas o case do Outback Delivery com R$ 21M em vendas incrementais e ROAS +100%, e termine perguntando se eu quero aprofundar.',
+        'Me fala sobre o case Outback Delivery: R$ 21M em vendas incrementais e ROAS +100%.',
     },
   ]
 

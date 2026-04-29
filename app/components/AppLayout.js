@@ -51,16 +51,20 @@ export default function AppLayout({ onLogout }) {
     setActiveSection('chat')
   }
 
+  // Usado pelos Marcos Recentes: vai pra aba do chat (com botão voltar)
   const handleAskAgent = (query) => {
     setSearchQuery(query)
+    setActiveSection('chat')
+    setMobileOpen(false)
+  }
+
+  // Usado pelo Quick Action "Falar com IA": só rola até o chat na mesma página
+  const handleScrollToChat = () => {
+    setMobileOpen(false)
     if (activeSection === 'dashboard') {
-      // Já no dashboard: rola até o chat (sem trocar de aba)
-      setTimeout(() => {
-        const chat = document.getElementById('chat-section')
-        if (chat) chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 50)
+      const chat = document.getElementById('chat-section')
+      if (chat) chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
     } else {
-      // Em outra seção: volta pro dashboard e rola até o chat
       setActiveSection('dashboard')
       setTimeout(() => {
         const chat = document.getElementById('chat-section')
@@ -69,26 +73,6 @@ export default function AppLayout({ onLogout }) {
     }
   }
 
-  const handleTalkToAgent = () => {
-    setMobileOpen(false)
-    if (activeSection === 'dashboard') {
-      // Já no dashboard: rola até o chat
-      const chat = document.getElementById('chat-section')
-      if (chat) {
-        chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    } else {
-      // Em outra seção: volta pro dashboard e rola
-      setActiveSection('dashboard')
-      setSearchQuery(null)
-      setTimeout(() => {
-        const chat = document.getElementById('chat-section')
-        if (chat) {
-          chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-      }, 100)
-    }
-  }
 
   const BackButton = () => (
     <button
@@ -301,7 +285,7 @@ export default function AppLayout({ onLogout }) {
               onLogout={onLogout}
               onSearch={handleSearch}
               onMobileMenu={() => setMobileOpen(true)}
-              onTalkToAgent={handleTalkToAgent}
+              onTalkToAgent={handleScrollToChat}
             />
           </div>
 
