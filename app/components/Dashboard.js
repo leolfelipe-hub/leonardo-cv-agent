@@ -251,7 +251,7 @@ export default function Dashboard({ onNavigate, onAskAgent, initialQuery }) {
             <QuickActions onAction={onAskAgent} onNavigate={onNavigate} />
           </div>
           <div className="animate-fade-in-up" style={{ animationDelay: '1100ms' }}>
-            <RecentActivity />
+            <RecentActivity onAskAgent={onAskAgent} />
           </div>
         </div>
       </section>

@@ -53,7 +53,20 @@ export default function AppLayout({ onLogout }) {
 
   const handleAskAgent = (query) => {
     setSearchQuery(query)
-    setActiveSection('chat')
+    if (activeSection === 'dashboard') {
+      // Já no dashboard: rola até o chat (sem trocar de aba)
+      setTimeout(() => {
+        const chat = document.getElementById('chat-section')
+        if (chat) chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 50)
+    } else {
+      // Em outra seção: volta pro dashboard e rola até o chat
+      setActiveSection('dashboard')
+      setTimeout(() => {
+        const chat = document.getElementById('chat-section')
+        if (chat) chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 150)
+    }
   }
 
   const handleTalkToAgent = () => {

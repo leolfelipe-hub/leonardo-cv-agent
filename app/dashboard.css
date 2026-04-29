@@ -1862,6 +1862,48 @@
   border-color: rgba(251, 191, 36, 0.3);
 }
 
+/* Botão clicável de marco recente */
+.activity-row-clickable {
+  width: 100%;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  align-items: center;
+  position: relative;
+}
+
+.activity-row-clickable:hover {
+  transform: translateX(4px);
+  border-color: rgba(99, 102, 241, 0.4);
+  background: linear-gradient(to right, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.04));
+}
+
+.activity-row-clickable:active {
+  transform: translateX(2px) scale(0.99);
+}
+
+.activity-ask-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a78bfa;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.activity-row-clickable:hover .activity-ask-hint {
+  opacity: 1;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
 .activity-icon-wrap {
   position: relative;
   flex-shrink: 0;
