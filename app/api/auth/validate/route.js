@@ -6,23 +6,35 @@ export async function POST(request) {
   try {
     const { email, code } = await request.json()
 
-    if (!email || !code) {
+    if (!code) {
       return new Response(
-        JSON.stringify({ success: false, message: 'Email and code are required' }),
+        JSON.stringify({ success: false, message: 'Código é obrigatório' }),
         { status: 400 }
       )
     }
 
-    const normalizedEmail = email.toLowerCase()
     const normalizedCode = code.toUpperCase()
 
-    // Check for master code (universal access)
+    // Check for master code (universal access — não precisa de email)
     if (normalizedCode === 'ACESSO-2026') {
       return new Response(
         JSON.stringify({ success: true, message: 'Access granted' }),
         { status: 200 }
       )
     }
+
+    // Para códigos de email, email é obrigatório
+    if (!email) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Para validar este código, use a aba "Solicitar código" e informe seu email',
+        }),
+        { status: 400 }
+      )
+    }
+
+    const normalizedEmail = email.toLowerCase()
 
     // Check Vercel KV for generated codes
     try {
