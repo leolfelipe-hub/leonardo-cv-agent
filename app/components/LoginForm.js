@@ -195,8 +195,22 @@ export default function LoginForm({ onLoginSuccess }) {
               >
                 <span className="login-option-emoji">📄</span>
                 <span className="login-option-text">
-                  <strong>Baixar meu CV em PDF</strong>
-                  <span className="login-option-sub">Formato tradicional</span>
+                  <strong>Baixar meu CV em PDF · Português</strong>
+                  <span className="login-option-sub">Formato tradicional 🇧🇷</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/CV-EN.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="login-option-link login-option-cv"
+              >
+                <span className="login-option-emoji">📄</span>
+                <span className="login-option-text">
+                  <strong>Download my CV · English</strong>
+                  <span className="login-option-sub">Traditional format 🇺🇸</span>
                 </span>
               </a>
             </li>

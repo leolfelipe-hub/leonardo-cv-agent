@@ -37,8 +37,12 @@ export default function AppLayout({ onLogout, onBackToExpress }) {
   }, [activeSection])
 
   const handleSectionChange = (section) => {
-    if (section === 'cv') {
+    if (section === 'cv-pt') {
       window.open('/CV-PT.pdf', '_blank')
+      return
+    }
+    if (section === 'cv-en') {
+      window.open('/CV-EN.pdf', '_blank')
       return
     }
     setActiveSection(section)

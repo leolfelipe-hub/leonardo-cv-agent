@@ -22,7 +22,8 @@ const navigation = [
   { key: 'certifications', icon: GraduationCap, label: 'Certificações' },
   { key: 'chat', icon: MessageCircle, label: 'Chat com IA' },
   { key: 'contact', icon: Mail, label: 'Contato' },
-  { key: 'cv', icon: FileDown, label: 'Download CV' },
+  { key: 'cv-pt', icon: FileDown, label: 'CV · Português', badge: 'PT' },
+  { key: 'cv-en', icon: FileDown, label: 'CV · English', badge: 'EN' },
 ]
 
 export default function Sidebar({
