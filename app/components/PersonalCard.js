@@ -5,58 +5,94 @@ import { Music, Headphones, Disc3, ExternalLink } from 'lucide-react'
 const spotifySearch = (title, artist) =>
   `https://open.spotify.com/search/${encodeURIComponent(`${title} ${artist}`)}`
 
-export default function PersonalCard() {
-  const tracks = [
-    {
-      num: '01',
-      title: 'Cruel Summer',
-      artist: 'Taylor Swift',
-      duration: '2:58',
-      url: 'https://open.spotify.com/track/1BxfuPKGuaTgP7aM0Bbdwr',
-    },
-    {
-      num: '02',
-      title: 'Espresso',
-      artist: 'Sabrina Carpenter',
-      duration: '2:55',
-      url: 'https://open.spotify.com/track/2qSkIjg1o9h3YT9RAgYN75',
-    },
-    {
-      num: '03',
-      title: 'Beautiful Things',
-      artist: 'Benson Boone',
-      duration: '3:00',
-      url: spotifySearch('Beautiful Things', 'Benson Boone'),
-    },
-    {
-      num: '04',
-      title: "we can't be friends",
-      artist: 'Ariana Grande',
-      duration: '3:48',
-      url: spotifySearch("we can't be friends", 'Ariana Grande'),
-    },
-    {
-      num: '05',
-      title: 'Miracle',
-      artist: 'Calvin Harris & Ellie Goulding',
-      duration: '3:32',
-      url: spotifySearch('Miracle', 'Calvin Harris Ellie Goulding'),
-    },
-    {
-      num: '06',
-      title: "I'm Good (Blue)",
-      artist: 'David Guetta & Bebe Rexha',
-      duration: '2:55',
-      url: 'https://open.spotify.com/track/4uUG5RXrOk84mYEfFvj3cK',
-    },
-    {
-      num: '07',
-      title: 'The Business',
-      artist: 'Tiësto',
-      duration: '2:44',
-      url: spotifySearch('The Business', 'Tiësto'),
-    },
-  ]
+const allTracks = [
+  {
+    num: '01',
+    title: 'Cruel Summer',
+    artist: 'Taylor Swift',
+    duration: '2:58',
+    url: 'https://open.spotify.com/track/1BxfuPKGuaTgP7aM0Bbdwr',
+  },
+  {
+    num: '02',
+    title: 'Espresso',
+    artist: 'Sabrina Carpenter',
+    duration: '2:55',
+    url: 'https://open.spotify.com/track/2qSkIjg1o9h3YT9RAgYN75',
+  },
+  {
+    num: '03',
+    title: 'Beautiful Things',
+    artist: 'Benson Boone',
+    duration: '3:00',
+    url: spotifySearch('Beautiful Things', 'Benson Boone'),
+  },
+  {
+    num: '04',
+    title: "we can't be friends",
+    artist: 'Ariana Grande',
+    duration: '3:48',
+    url: spotifySearch("we can't be friends", 'Ariana Grande'),
+  },
+  {
+    num: '05',
+    title: 'Miracle',
+    artist: 'Calvin Harris & Ellie Goulding',
+    duration: '3:32',
+    url: spotifySearch('Miracle', 'Calvin Harris Ellie Goulding'),
+  },
+  {
+    num: '06',
+    title: "I'm Good (Blue)",
+    artist: 'David Guetta & Bebe Rexha',
+    duration: '2:55',
+    url: 'https://open.spotify.com/track/4uUG5RXrOk84mYEfFvj3cK',
+  },
+  {
+    num: '07',
+    title: 'The Business',
+    artist: 'Tiësto',
+    duration: '2:44',
+    url: spotifySearch('The Business', 'Tiësto'),
+  },
+]
+
+export default function PersonalCard({ compact = false }) {
+  if (compact) {
+    const topTracks = allTracks.slice(0, 3)
+    return (
+      <div className="personal-card-compact">
+        <div className="personal-compact-header">
+          <div className="personal-icon-hero">
+            <Headphones size={20} />
+          </div>
+          <div>
+            <h3 className="personal-compact-title">Quer me conhecer?</h3>
+            <p className="personal-compact-sub">Pop, eletrônica e energia 🎧</p>
+          </div>
+        </div>
+        <div className="personal-compact-tracks">
+          {topTracks.map((track) => (
+            <a
+              key={track.num}
+              href={track.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="personal-compact-track"
+              title={`Ouvir "${track.title}" no Spotify`}
+            >
+              <Music size={14} />
+              <div className="personal-compact-track-info">
+                <span className="personal-compact-track-title">{track.title}</span>
+                <span className="personal-compact-track-artist">{track.artist}</span>
+              </div>
+              <ExternalLink size={12} className="personal-compact-track-ext" />
+            </a>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="personal-card">
@@ -82,9 +118,9 @@ export default function PersonalCard() {
             <Disc3 size={14} />
             Top tracks
           </span>
-          <span className="personal-tracks-header-count">{tracks.length} músicas</span>
+          <span className="personal-tracks-header-count">{allTracks.length} músicas</span>
         </div>
-        {tracks.map((track) => (
+        {allTracks.map((track) => (
           <a
             key={track.num}
             href={track.url}

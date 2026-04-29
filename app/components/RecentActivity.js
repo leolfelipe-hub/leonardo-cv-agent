@@ -2,7 +2,7 @@
 
 import { Award, TrendingUp, Bot, Users, Coins, Clock, CheckCircle, Zap, MessageSquare } from 'lucide-react'
 
-export default function RecentActivity({ onAskAgent }) {
+export default function RecentActivity({ onAskAgent, layout = 'list' }) {
   const milestones = [
     {
       id: 1,
@@ -87,7 +87,7 @@ export default function RecentActivity({ onAskAgent }) {
         </div>
       </div>
 
-      <div className="activities-list">
+      <div className={`activities-list ${layout === 'grid' ? 'activities-grid' : ''}`}>
         {milestones.map((milestone) => {
           const Icon = milestone.icon
           return (

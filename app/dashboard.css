@@ -357,6 +357,48 @@
   letter-spacing: 0.02em;
 }
 
+/* Topnav clean (versão simplificada) */
+.topnav-clean .topnav-inner {
+  gap: 16px;
+}
+
+.topnav-brand-prominent {
+  gap: 12px;
+}
+
+.topnav-brand-name-full {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .topnav-brand-name-full { display: none; }
+}
+
+.topnav-logout-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.topnav-logout-icon:hover {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
 /* CTA Falar com IA — sempre visível */
 .topnav-cta-talk {
   display: inline-flex;
@@ -2773,11 +2815,11 @@
   .welcome-row { gap: 16px; }
   .welcome-highlights { min-width: auto; width: 100%; }
 
-  /* Esconder metrics cards no mobile (manter no desktop) */
+  /* Esconder metrics cards no mobile (caso venham a ser usados) */
   .metrics-grid { display: none !important; }
 
-  /* Reordenar main-grid no mobile - nova storyline */
-  /* Welcome → Marcos → QA → Donuts → Insights → Trajetória → Chat → Status → Spotify */
+  /* Mobile: dashboard reduzido empilha naturalmente */
+  /* Welcome → Marcos → Charts (linha + marcas) → Spotify */
   .main-grid {
     display: flex !important;
     flex-direction: column;
@@ -2787,12 +2829,9 @@
   .side-area {
     display: contents;
   }
-  .side-area > :nth-child(2) { order: 1; }   /* Marcos (Recent Activity) */
-  .side-area > :nth-child(1) { order: 2; }   /* Quick Actions */
-  .charts-area > :nth-child(3) { order: 3; } /* Donuts row */
-  .charts-area > :nth-child(4) { order: 4; } /* Insights */
-  .charts-area > :nth-child(2) { order: 5; } /* Trajetória (line chart) */
-  .charts-area > :nth-child(1) { order: 6; } /* Chat */
+  /* Ordem mobile: Marcos primeiro, depois charts */
+  .side-area > :nth-child(1) { order: 1; }   /* Marcos */
+  .charts-area > :nth-child(1) { order: 2; } /* Charts row */
 }
 
 /* ============================================
@@ -3752,6 +3791,377 @@
   gap: 16px;
 }
 
+/* Nome como título do welcome (sem o "Bem-vindo Recrutador") */
+.welcome-name-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+  .welcome-name-title { font-size: 1.3rem; }
+}
+
+/* ============================================
+   WELCOME MANIFESTO (integrado no welcome card)
+   ============================================ */
+
+.welcome-manifesto {
+  flex-basis: 100%;
+  width: 100%;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(251, 191, 36, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Mobile: reorder do welcome — Info → Manifesto → Highlights */
+@media (max-width: 768px) {
+  .welcome-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .welcome-info { order: 1; }
+  .welcome-manifesto {
+    order: 2;
+    margin-top: 0;
+    padding-top: 16px;
+  }
+  .welcome-highlights {
+    order: 3;
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+.welcome-emoji-wave {
+  display: inline-block;
+  animation: wave 1.2s ease-in-out;
+  margin-right: 6px;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(15deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.manifesto-body {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.manifesto-body strong {
+  color: white;
+  font-weight: 500;
+}
+
+.manifesto-flow {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(251, 191, 36, 0.12);
+}
+
+.flow-step {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--accent-amber);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.flow-step-final {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+}
+
+.flow-arrow {
+  color: var(--accent-amber);
+  font-weight: 700;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .dashboard-manifesto { padding: 18px 20px; }
+  .manifesto-headline { font-size: 0.95rem; }
+  .manifesto-body { font-size: 0.88rem; }
+  .manifesto-flow { font-size: 0.82rem; gap: 4px 6px; }
+  .flow-step { padding: 3px 10px; font-size: 0.72rem; }
+}
+
+/* ============================================
+   DASHBOARD ENXUTO — charts row + marcos grid + spotify medium
+   ============================================ */
+
+.dashboard-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-charts-row { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* Marcos em grid (2 colunas no desktop, 3 em telas grandes) */
+.activities-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 14px !important;
+}
+
+@media (min-width: 1280px) {
+  .activities-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .activities-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Spotify tamanho médio — full content, mas com max-width */
+.dashboard-spotify-medium {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-spotify-medium .personal-card {
+  max-width: 880px;
+  width: 100%;
+  padding: 22px 26px;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+}
+
+.dashboard-spotify-medium .personal-card .personal-title {
+  font-size: 1.2rem;
+}
+
+.dashboard-spotify-medium .personal-card .personal-text {
+  font-size: 0.88rem;
+}
+
+.dashboard-spotify-medium .personal-card .personal-icon-hero {
+  width: 48px;
+  height: 48px;
+}
+
+.dashboard-spotify-medium .personal-card .personal-track {
+  padding: 8px 12px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-spotify-medium .personal-card {
+    grid-template-columns: 1fr;
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .dashboard-spotify-medium .personal-card .personal-title {
+    font-size: 1rem;
+  }
+  .dashboard-spotify-medium .personal-card .personal-text {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .dashboard-spotify-medium .personal-card .personal-icon-hero {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .dashboard-spotify-medium .personal-card .personal-icon-hero svg {
+    width: 18px;
+    height: 18px;
+  }
+  /* Mostra só 4 tracks (1-4), esconde 5-7 */
+  .dashboard-spotify-medium .personal-card .personal-track:nth-child(n + 6) {
+    display: none;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track {
+    padding: 7px 10px;
+    gap: 8px;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track-num {
+    font-size: 0.75rem;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track-title {
+    font-size: 0.82rem;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track-artist {
+    font-size: 0.72rem;
+  }
+  .dashboard-spotify-medium .personal-card .personal-track-duration {
+    font-size: 0.72rem;
+  }
+  /* Esconde a 2ª linha de texto descritivo (mais leve) */
+  .dashboard-spotify-medium .personal-card .personal-info > p:nth-of-type(2) {
+    display: none;
+  }
+  .dashboard-spotify-medium .personal-card .personal-tracks-header {
+    padding-bottom: 4px;
+    margin-bottom: 2px;
+  }
+}
+
+/* ============================================
+   SPOTIFY COMPACT (legado — não usado no dashboard atual)
+   ============================================ */
+
+.dashboard-spotify-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.personal-card-compact {
+  width: 100%;
+  max-width: 33%;
+  padding: 18px 20px;
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(29, 185, 84, 0.08), rgba(0, 0, 0, 0.3));
+  border: 1px solid rgba(29, 185, 84, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 1024px) {
+  .personal-card-compact { max-width: 50%; }
+}
+
+@media (max-width: 768px) {
+  .personal-card-compact { max-width: 100%; padding: 16px; }
+}
+
+.personal-compact-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.personal-compact-header .personal-icon-hero {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.personal-compact-title {
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.personal-compact-sub {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin: 2px 0 0;
+}
+
+.personal-compact-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.personal-compact-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.personal-compact-track:hover {
+  background: rgba(29, 185, 84, 0.08);
+  border-color: rgba(29, 185, 84, 0.25);
+  transform: translateX(2px);
+}
+
+.personal-compact-track svg {
+  color: #1db954;
+  flex-shrink: 0;
+}
+
+.personal-compact-track-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.personal-compact-track-title {
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.personal-compact-track-artist {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.personal-compact-track-ext {
+  color: var(--text-muted);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.personal-compact-track:hover .personal-compact-track-ext {
+  opacity: 1;
+  color: #1db954;
+}
+
 /* ============================================
    PERSONAL CARD (Spotify)
    ============================================ */
@@ -3978,6 +4388,413 @@
 }
 
 /* ============================================
+   EXPRESS LANDING (versão rápida 30s)
+   ============================================ */
+
+.express-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-primary);
+}
+
+.express-topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+}
+
+.express-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.express-mini-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.express-mini-name {
+  color: var(--accent-amber);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.express-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.express-logout-btn:hover {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--accent-amber);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.express-main {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px 64px;
+}
+
+.express-card {
+  width: 100%;
+  max-width: 720px;
+  padding: 40px 48px;
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.5));
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(248, 250, 252, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .express-card { padding: 28px 22px; gap: 24px; border-radius: 20px; }
+  .express-topbar { padding: 14px 18px; }
+  .express-main { padding: 16px 12px 48px; }
+}
+
+.express-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #34d399;
+  font-size: 0.78rem;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.express-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.express-status-divider {
+  color: rgba(52, 211, 153, 0.4);
+  margin: 0 2px;
+}
+
+.express-identity {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+@media (max-width: 640px) {
+  .express-identity { flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+}
+
+.express-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.express-avatar-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(249, 115, 22, 0.15));
+  filter: blur(24px);
+  z-index: -1;
+}
+
+.express-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.35);
+}
+
+.express-identity-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.express-name {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.express-role {
+  color: var(--accent-amber);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.express-companies {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.express-pitch {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.express-pitch strong {
+  color: white;
+  font-weight: 600;
+}
+
+.express-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 480px) {
+  .express-stats { grid-template-columns: 1fr; }
+}
+
+.express-stat {
+  padding: 18px 14px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+  animation: fade-in-up 0.5s ease both;
+}
+
+.express-stat:hover {
+  border-color: rgba(251, 191, 36, 0.3);
+  transform: translateY(-2px);
+}
+
+.express-stat-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.express-stat-icon.amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.express-stat-icon.gold { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+.express-stat-icon.emerald { background: linear-gradient(135deg, #fcd34d, #fbbf24); }
+
+.express-stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.express-stat-label {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.express-ctas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .express-ctas { grid-template-columns: 1fr; }
+}
+
+.express-cta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  border: 1px solid;
+  transition: all 0.3s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.express-cta:hover { transform: translateY(-2px); }
+
+.express-cta svg { flex-shrink: 0; }
+
+.express-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.express-cta-text strong {
+  color: white;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.express-cta-text span {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  line-height: 1.3;
+}
+
+.express-cta-whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border-color: rgba(37, 211, 102, 0.5);
+  color: white;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.25);
+}
+
+.express-cta-whatsapp:hover {
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+.express-cta-whatsapp .express-cta-text span {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.express-cta-cv {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(245, 158, 11, 0.08));
+  border-color: rgba(251, 191, 36, 0.35);
+  color: white;
+}
+
+.express-cta-cv:hover {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.22), rgba(245, 158, 11, 0.12));
+  border-color: rgba(251, 191, 36, 0.55);
+}
+
+.express-cta-cv .express-cta-text span { color: var(--accent-amber); }
+.express-cta-cv svg { color: var(--accent-amber); }
+
+.express-cta-chat {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.18), rgba(180, 83, 9, 0.1));
+  border-color: rgba(217, 119, 6, 0.4);
+  color: white;
+}
+
+.express-cta-chat:hover {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.28), rgba(180, 83, 9, 0.15));
+  border-color: rgba(217, 119, 6, 0.6);
+}
+
+.express-cta-chat .express-cta-text span { color: #fcd34d; }
+.express-cta-chat svg { color: #fbbf24; }
+
+.express-cta-explore {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.express-cta-explore:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.express-cta-explore .express-cta-text span { color: var(--text-muted); }
+.express-cta-explore svg { color: var(--text-secondary); }
+
+.express-footer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Botão Voltar Express no AppLayout */
+.back-to-express-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.back-to-express-btn:hover {
+  background: rgba(251, 191, 36, 0.1);
+  color: var(--accent-amber);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+@media (max-width: 768px) {
+  .back-to-express-btn span { display: none; }
+}
+
+/* ============================================
    LOGIN PAGE (Dark Theme)
    ============================================ */
 
@@ -4138,6 +4955,110 @@
 .login-hero-cta-line strong {
   color: var(--accent-amber-bright);
   font-style: normal;
+}
+
+.login-hero-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-hero-options li {
+  display: block;
+}
+
+.login-option-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-align: left;
+}
+
+.login-option-link:hover {
+  background: rgba(251, 191, 36, 0.06);
+  border-color: rgba(251, 191, 36, 0.3);
+  transform: translateX(2px);
+}
+
+.login-option-link strong {
+  color: white;
+  font-weight: 600;
+  display: block;
+  font-size: 0.93rem;
+}
+
+.login-option-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.login-option-sub {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 400;
+}
+
+.login-option-sub em {
+  color: var(--accent-amber);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.login-option-emoji {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* WhatsApp tem hint verde sutil no hover */
+.login-option-whatsapp:hover {
+  background: rgba(37, 211, 102, 0.08);
+  border-color: rgba(37, 211, 102, 0.35);
+}
+
+/* CV tem hint amber */
+.login-option-cv:hover {
+  background: rgba(251, 191, 36, 0.08);
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+/* Pulse no card de login quando clica em opção que requer acesso */
+.login-card-pulse {
+  animation: login-card-pulse-anim 1.6s ease;
+}
+
+@keyframes login-card-pulse-anim {
+  0% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(248, 250, 252, 0.1); }
+  30% {
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      0 0 0 4px rgba(251, 191, 36, 0.4),
+      inset 0 1px 0 rgba(248, 250, 252, 0.2);
+    transform: scale(1.015);
+  }
+  100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(248, 250, 252, 0.1); }
 }
 
 .login-hero-pills {

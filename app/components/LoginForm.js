@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Sparkles, Bot, ArrowRight, MessageCircle, FileDown } from 'lucide-react'
+import { Sparkles, ArrowRight } from 'lucide-react'
 
 export default function LoginForm({ onLoginSuccess }) {
   const [mode, setMode] = useState('have-code')
@@ -158,24 +158,96 @@ export default function LoginForm({ onLoginSuccess }) {
           </h1>
 
           <div className="login-hero-text">
-            Como bom <strong>growth hacker</strong>, criei um{' '}
-            <strong>dashboard com IA</strong> pra contar minha trajetória de{' '}
-            <strong className="accent">19+ anos</strong> em Growth, CRM e Performance — com cases
-            reais em <strong>Mastercard, Braza Bank, Outback e Accor</strong>.
+            Construí este site com o apoio de{' '}
+            <strong>ferramentas de IA, incluindo Claude Code</strong>, pra contar um pouco da
+            minha trajetória, e mostrar as <strong>ferramentas que eu domino</strong> e a{' '}
+            <strong>minha forma de trabalhar</strong>: transformar{' '}
+            <strong className="accent">dado em contexto</strong>, contexto em{' '}
+            <strong className="accent">decisão</strong>, e decisão em{' '}
+            <strong className="accent">ação</strong>.
           </div>
 
-          <div className="login-hero-text ai-line">
-            <Bot size={20} style={{ color: 'var(--accent-amber)', flexShrink: 0, marginTop: '2px' }} />
-            <span>
-              Tudo aqui foi feito com IA, inclusive um <strong>agente</strong> que conversa sobre
-              qualquer tema da minha carreira.
-            </span>
+          <div className="login-hero-text">
+            <strong>Aqui você pode:</strong>
           </div>
+
+          <ul className="login-hero-options">
+            <li>
+              <a
+                href="https://wa.me/5511982976543?text=Ol%C3%A1%20Leonardo!%20Vi%20seu%20CV%20Agent%20e%20gostaria%20de%20conversar."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="login-option-link login-option-whatsapp"
+              >
+                <span className="login-option-emoji">💬</span>
+                <span className="login-option-text">
+                  <strong>Me chamar direto no WhatsApp</strong>
+                  <span className="login-option-sub">Pra gente conversar</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/CV-PT.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="login-option-link login-option-cv"
+              >
+                <span className="login-option-emoji">📄</span>
+                <span className="login-option-text">
+                  <strong>Baixar meu CV em PDF</strong>
+                  <span className="login-option-sub">Formato tradicional</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => {
+                  const card = document.querySelector('.login-card-dark')
+                  if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                    card.classList.add('login-card-pulse')
+                    setTimeout(() => card.classList.remove('login-card-pulse'), 1600)
+                  }
+                }}
+                className="login-option-link login-option-locked"
+              >
+                <span className="login-option-emoji">🤖</span>
+                <span className="login-option-text">
+                  <strong>Conversar com o agente</strong>
+                  <span className="login-option-sub">
+                    Detalhes da minha trajetória e cases · <em>requer acesso</em>
+                  </span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => {
+                  const card = document.querySelector('.login-card-dark')
+                  if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                    card.classList.add('login-card-pulse')
+                    setTimeout(() => card.classList.remove('login-card-pulse'), 1600)
+                  }
+                }}
+                className="login-option-link login-option-locked"
+              >
+                <span className="login-option-emoji">📊</span>
+                <span className="login-option-text">
+                  <strong>Explorar um dashboard interativo</strong>
+                  <span className="login-option-sub">
+                    Mensuração e visualização de dados · <em>requer acesso</em>
+                  </span>
+                </span>
+              </button>
+            </li>
+          </ul>
 
           <div className="login-hero-cta-line">
-            💬 Depois que navegar, <strong>me chama no WhatsApp</strong> pra gente trocar uma
-            ideia. Caso precise, o <strong>CV tradicional em PDF</strong> também tá disponível pra
-            baixar no dash. <strong>Boa análise!</strong>
+            <strong>Boa análise!</strong> Vou ficar muito feliz com o seu contato. 💬
           </div>
 
           <div className="login-hero-pills">

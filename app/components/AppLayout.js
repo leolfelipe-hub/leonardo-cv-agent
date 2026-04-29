@@ -10,7 +10,7 @@ import ExpertiseRadar from './ExpertiseRadar'
 import Certifications from './Certifications'
 import ChatModule from './ChatModule'
 
-export default function AppLayout({ onLogout }) {
+export default function AppLayout({ onLogout, onBackToExpress }) {
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('dashboard')
@@ -286,6 +286,7 @@ export default function AppLayout({ onLogout }) {
               onSearch={handleSearch}
               onMobileMenu={() => setMobileOpen(true)}
               onTalkToAgent={handleScrollToChat}
+              onBackToExpress={onBackToExpress}
             />
           </div>
 
