@@ -58,19 +58,11 @@ export default function AppLayout({ onLogout, onBackToExpress }) {
     setMobileOpen(false)
   }
 
-  // Usado pelo Quick Action "Falar com IA": só rola até o chat na mesma página
+  // Usado pelo botão "Falar com IA" do topnav: vai direto pra aba Chat
   const handleScrollToChat = () => {
     setMobileOpen(false)
-    if (activeSection === 'dashboard') {
-      const chat = document.getElementById('chat-section')
-      if (chat) chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    } else {
-      setActiveSection('dashboard')
-      setTimeout(() => {
-        const chat = document.getElementById('chat-section')
-        if (chat) chat.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }, 150)
-    }
+    setSearchQuery(null)
+    setActiveSection('chat')
   }
 
 

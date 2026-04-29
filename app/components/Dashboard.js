@@ -86,6 +86,12 @@ export default function Dashboard({ onNavigate, onAskAgent, initialQuery }) {
                 <span className="flow-arrow">→</span>
                 <span className="flow-step flow-step-final">ação</span>
               </p>
+
+              <p className="manifesto-tip">
+                💡 No <strong>menu lateral</strong> você encontra outras abas pra se aprofundar em{' '}
+                <strong>Trajetória</strong>, <strong>Cases</strong>, <strong>Expertise</strong>,{' '}
+                <strong>Certificações</strong> e <strong>Chat com IA</strong>.
+              </p>
             </div>
           </div>
         </div>
