@@ -1134,22 +1134,24 @@
 .welcome-card {
   position: relative;
   border-radius: 20px;
-  padding: 20px 24px;
+  padding: 18px 24px 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .welcome-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .welcome-info {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 20px;
+  flex: 1;
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
@@ -1197,7 +1199,7 @@
 .welcome-text {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .welcome-title-row {
@@ -1240,8 +1242,8 @@
 .welcome-meta {
   display: flex;
   align-items: center;
-  gap: 24px;
-  margin-top: 8px;
+  gap: 14px;
+  margin-top: 4px;
   flex-wrap: wrap;
 }
 
@@ -1281,9 +1283,9 @@
 
 /* Highlights Card (substitui Live Market) */
 .welcome-highlights {
-  border-radius: 14px;
-  padding: 16px 20px;
-  min-width: 280px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  min-width: 260px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1291,7 +1293,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .highlights-title {
@@ -1308,14 +1310,14 @@
 .highlights-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .highlight-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 8px;
   border: 1px solid;
 }
@@ -3812,12 +3814,12 @@
 .welcome-manifesto {
   flex-basis: 100%;
   width: 100%;
-  margin-top: 18px;
-  padding-top: 18px;
+  margin-top: 12px;
+  padding-top: 12px;
   border-top: 1px solid rgba(251, 191, 36, 0.18);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 /* Mobile: reorder do welcome — Info → Manifesto → Highlights */
