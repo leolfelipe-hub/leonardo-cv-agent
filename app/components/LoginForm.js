@@ -12,6 +12,7 @@ export default function LoginForm({ onLoginSuccess }) {
   const [success, setSuccess] = useState('')
   const [codeSent, setCodeSent] = useState(false)
   const [requestEmail, setRequestEmail] = useState('')
+  const [autoDetected, setAutoDetected] = useState(false)
   const spotlightRef = useRef(null)
 
   useEffect(() => {
@@ -26,15 +27,29 @@ export default function LoginForm({ onLoginSuccess }) {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
+  // Auto-preenche email/código se vier por URL (ex: link do email)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams(window.location.search)
+    const emailParam = params.get('email')
+    const codeParam = params.get('code')
+    if (emailParam || codeParam) {
+      setMode('have-code')
+      if (emailParam) setEmail(emailParam)
+      if (codeParam) setCode(codeParam.toUpperCase())
+      setAutoDetected(true)
+      setSuccess('✨ Detectamos seu código! Clica em "Acessar" pra entrar.')
+    }
+  }, [])
+
   const handleSubmitCode = async (e) => {
     e.preventDefault()
     setError('')
     setSuccess('')
     setLoading(true)
 
-    // Tab 1 (have-code) usa email vazio — só funciona pro MASTER
-    // Tab 2 (request-code) usa o email guardado em estado
-    const validationEmail = mode === 'have-code' ? '' : email
+    // Email pode vir do form (Tab 1 com campo opcional, ou Tab 2 já preenchido)
+    const validationEmail = email || ''
 
     try {
       const response = await fetch('/api/auth/validate', {
@@ -50,11 +65,7 @@ export default function LoginForm({ onLoginSuccess }) {
         if (validationEmail) localStorage.setItem('userEmail', validationEmail)
         onLoginSuccess()
       } else {
-        setError(
-          mode === 'have-code'
-            ? 'Código inválido. Se você recebeu o código por email, use a aba "Solicitar código".'
-            : data.message || 'Código inválido'
-        )
+        setError(data.message || 'Código inválido')
       }
     } catch (err) {
       setError('Erro na conexão. Tente novamente.')
@@ -211,6 +222,19 @@ export default function LoginForm({ onLoginSuccess }) {
             {mode === 'have-code' && (
               <form onSubmit={handleSubmitCode} className="login-form-dark">
                 <div className="login-field-dark">
+                  <label>
+                    Email <span style={{ color: 'var(--text-muted)', fontWeight: 400, textTransform: 'none' }}>(se recebeu por email)</span>
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="seu@email.com"
+                    disabled={loading}
+                  />
+                </div>
+
+                <div className="login-field-dark">
                   <label>Código de Acesso</label>
                   <input
                     type="text"
@@ -219,7 +243,7 @@ export default function LoginForm({ onLoginSuccess }) {
                     placeholder="Insira seu código"
                     required
                     disabled={loading}
-                    autoFocus
+                    autoFocus={!autoDetected}
                     style={{ fontFamily: 'monospace', letterSpacing: '2px' }}
                   />
                 </div>
@@ -279,8 +303,12 @@ export default function LoginForm({ onLoginSuccess }) {
                 ) : (
                   <>
                     <div className="login-msg-success">
-                      ✓ Código enviado para <strong>{email}</strong>! Verifique sua caixa de
-                      entrada (e a pasta de spam).
+                      ✓ Código enviado para <strong>{email}</strong>!
+                    </div>
+
+                    <div className="login-msg-info">
+                      📬 <strong>Importante:</strong> verifica também a pasta de <strong>spam/lixo eletrônico</strong>.
+                      Se chegar lá, marca como <em>"não é spam"</em> pra próxima vez vir direto na inbox.
                     </div>
 
                     <div className="login-field-dark">

@@ -4316,6 +4316,27 @@
   font-size: 0.85rem;
 }
 
+.login-msg-info {
+  padding: 12px 14px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-left: 3px solid #fbbf24;
+  border-radius: 10px;
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.login-msg-info strong {
+  color: #ffffff;
+}
+
+.login-msg-info em {
+  color: #fbbf24;
+  font-style: normal;
+  font-weight: 500;
+}
+
 .login-submit-btn {
   padding: 14px 20px;
   background: linear-gradient(135deg, #f59e0b, #d97706);
