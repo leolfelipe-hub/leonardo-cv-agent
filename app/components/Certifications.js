@@ -130,7 +130,7 @@ export default function Certifications() {
 
       {/* Education */}
       <h3 className="cert-section-title">
-        <GraduationCap size={18} style={{ color: '#a78bfa' }} />
+        <GraduationCap size={18} style={{ color: '#fcd34d' }} />
         Formação Acadêmica
         <div className="cert-section-title-line"></div>
       </h3>
@@ -152,7 +152,7 @@ export default function Certifications() {
 
       {/* Languages */}
       <h3 className="cert-section-title">
-        <Languages size={18} style={{ color: '#34d399' }} />
+        <Languages size={18} style={{ color: '#fcd34d' }} />
         Idiomas
         <div className="cert-section-title-line"></div>
       </h3>
@@ -160,7 +160,7 @@ export default function Certifications() {
       <div className="cert-grid">
         <div className="cert-card">
           <div className="cert-card-head">
-            <div className="cert-card-icon" style={{ background: 'linear-gradient(135deg, #10b981, #0d9488)' }}>
+            <div className="cert-card-icon" style={{ background: 'linear-gradient(135deg, #fbbf24, #d97706)' }}>
               🇧🇷
             </div>
             <span className="cert-card-badge">Nativo</span>
@@ -173,7 +173,7 @@ export default function Certifications() {
 
         <div className="cert-card">
           <div className="cert-card-head">
-            <div className="cert-card-icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' }}>
+            <div className="cert-card-icon" style={{ background: 'linear-gradient(135deg, #f59e0b, #92400e)' }}>
               🇬🇧
             </div>
             <span className="cert-card-badge">Avançado</span>

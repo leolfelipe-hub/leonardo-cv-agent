@@ -29,10 +29,10 @@ const careerRevenue = [
 ]
 
 const casesByCategory = [
-  { name: 'Aquisição', value: 1, color: '#3b82f6' },
-  { name: 'CRM/LCM', value: 1, color: '#8b5cf6' },
+  { name: 'Aquisição', value: 1, color: '#f59e0b' },
+  { name: 'CRM/LCM', value: 1, color: '#d97706' },
   { name: 'Mídia 360°', value: 1, color: '#f97316' },
-  { name: 'Growth', value: 1, color: '#10b981' },
+  { name: 'Growth', value: 1, color: '#fbbf24' },
   { name: 'Atribuição', value: 1, color: '#fbbf24' },
 ]
 
@@ -51,13 +51,13 @@ const brandsData = [
   {
     name: 'Hotelaria',
     value: 7,
-    color: '#8b5cf6',
+    color: '#d97706',
     brands: ['Novotel', 'Ibis', 'ibis Styles', 'Mercure', 'Grand Mercure', 'Adagio', 'Pullman'],
   },
   {
     name: 'Cards/Fintech',
     value: 6,
-    color: '#3b82f6',
+    color: '#f59e0b',
     brands: ['LATAM Pass', 'Sicredi', 'Bradesco', 'Mercado Pago', 'Stone', 'Braza Bank'],
   },
   {
@@ -69,7 +69,7 @@ const brandsData = [
   {
     name: 'Educação/Outros',
     value: 2,
-    color: '#10b981',
+    color: '#fbbf24',
     brands: ['Homex Brasil', 'Federal Cursos'],
   },
 ]
@@ -128,8 +128,8 @@ export default function ChartCard({ title, subtitle, type = 'line', trend = '+12
               <Bar dataKey="value" fill="url(#barGradient)" radius={[4, 4, 0, 0]} />
               <defs>
                 <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#1d4ed8" />
+                  <stop offset="0%" stopColor="#f59e0b" />
+                  <stop offset="100%" stopColor="#92400e" />
                 </linearGradient>
               </defs>
             </BarChart>
@@ -226,8 +226,8 @@ export default function ChartCard({ title, subtitle, type = 'line', trend = '+12
               />
               <defs>
                 <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#3b82f6" />
-                  <stop offset="100%" stopColor="#8b5cf6" />
+                  <stop offset="0%" stopColor="#f59e0b" />
+                  <stop offset="100%" stopColor="#d97706" />
                 </linearGradient>
               </defs>
             </LineChart>

@@ -8,7 +8,7 @@ export default function QuickActions({ onAction, onNavigate }) {
       icon: MessageSquare,
       label: 'Falar com IA',
       desc: 'Pergunte sobre experiência',
-      color: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+      color: 'linear-gradient(135deg, #f59e0b, #d97706)',
       action: () => {
         const chat = document.getElementById('chat-section')
         if (chat) {
@@ -22,21 +22,21 @@ export default function QuickActions({ onAction, onNavigate }) {
       icon: Award,
       label: 'Ver Cases',
       desc: '5 cases reais com números',
-      color: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+      color: 'linear-gradient(135deg, #f59e0b, #f59e0b)',
       action: () => onNavigate && onNavigate('cases'),
     },
     {
       icon: Briefcase,
       label: 'Trajetória',
       desc: 'Mastercard, Braza, Outback, Accor',
-      color: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+      color: 'linear-gradient(135deg, #d97706, #f59e0b)',
       action: () => onNavigate && onNavigate('timeline'),
     },
     {
       icon: Coins,
       label: 'Resultados',
       desc: 'R$21M+ em receita gerada',
-      color: 'linear-gradient(135deg, #f97316, #ef4444)',
+      color: 'linear-gradient(135deg, #f97316, #92400e)',
       action: () =>
         onAction && onAction('Quais foram os principais resultados financeiros do Leonardo?'),
     },
@@ -52,7 +52,7 @@ export default function QuickActions({ onAction, onNavigate }) {
       icon: FileDown,
       label: 'Download CV',
       desc: 'PDF Português / English',
-      color: 'linear-gradient(135deg, #ec4899, #f43f5e)',
+      color: 'linear-gradient(135deg, #f59e0b, #b45309)',
       action: () => onNavigate && onNavigate('cv'),
     },
   ]

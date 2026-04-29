@@ -117,7 +117,7 @@ export default function Sidebar({
                 <span style={{ color: 'var(--text-muted)' }}>Disponível</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <div className="status-dot"></div>
-                  <span style={{ color: '#34d399' }}>Online</span>
+                  <span style={{ color: '#fcd34d' }}>Online</span>
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ export default function RecentActivity({ onAskAgent }) {
       time: 'Mastercard • 2024-2025',
       status: 'success',
       tag: 'AI',
-      color: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+      color: 'linear-gradient(135deg, #f59e0b, #d97706)',
       prompt: 'Me fala sobre o Media Plan Audit Agent que o Leonardo construiu na Mastercard.',
     },
     {
@@ -23,7 +23,7 @@ export default function RecentActivity({ onAskAgent }) {
       time: 'Mastercard • 2024',
       status: 'success',
       tag: 'GROWTH',
-      color: 'linear-gradient(135deg, #10b981, #0d9488)',
+      color: 'linear-gradient(135deg, #fbbf24, #d97706)',
       prompt:
         'Me fala sobre o case do LATAM Pass na Mastercard: +25% cardholders e CPA -50%.',
     },
@@ -46,7 +46,7 @@ export default function RecentActivity({ onAskAgent }) {
       time: 'Braza Bank • 2023',
       status: 'success',
       tag: 'GROWTH',
-      color: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+      color: 'linear-gradient(135deg, #d97706, #f59e0b)',
       prompt:
         'Me fala sobre o crescimento da base B2C no Braza Bank: +120% em 12 meses e CAC -53%.',
     },
@@ -58,7 +58,7 @@ export default function RecentActivity({ onAskAgent }) {
       time: 'Outback • 2020',
       status: 'success',
       tag: 'REVENUE',
-      color: 'linear-gradient(135deg, #f97316, #dc2626)',
+      color: 'linear-gradient(135deg, #f97316, #78350f)',
       prompt:
         'Me fala sobre o case Outback Delivery: R$ 21M em vendas incrementais e ROAS +100%.',
     },

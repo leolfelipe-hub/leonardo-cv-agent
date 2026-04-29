@@ -139,7 +139,7 @@ export default function AppLayout({ onLogout }) {
                   style={{ textDecoration: 'none', display: 'block' }}
                 >
                   <div className="quick-action-content">
-                    <div className="quick-action-icon" style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}>
+                    <div className="quick-action-icon" style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}>
                       📧
                     </div>
                     <div className="quick-action-text">
@@ -156,7 +156,7 @@ export default function AppLayout({ onLogout }) {
                   style={{ textDecoration: 'none', display: 'block' }}
                 >
                   <div className="quick-action-content">
-                    <div className="quick-action-icon" style={{ background: 'linear-gradient(135deg, #3b82f6, #06b6d4)' }}>
+                    <div className="quick-action-icon" style={{ background: 'linear-gradient(135deg, #f59e0b, #f59e0b)' }}>
                       🔗
                     </div>
                     <div className="quick-action-text">
@@ -173,7 +173,7 @@ export default function AppLayout({ onLogout }) {
                   style={{ textDecoration: 'none', display: 'block' }}
                 >
                   <div className="quick-action-content">
-                    <div className="quick-action-icon" style={{ background: 'linear-gradient(135deg, #10b981, #0d9488)' }}>
+                    <div className="quick-action-icon" style={{ background: 'linear-gradient(135deg, #fbbf24, #d97706)' }}>
                       💬
                     </div>
                     <div className="quick-action-text">
